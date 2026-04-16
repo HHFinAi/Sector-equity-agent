@@ -139,7 +139,7 @@ The library has moved through five versioned releases. Version 1.0 was the initi
 
 ## Author and attribution
 
-Authored by a senior buy-side healthcare equity analyst with 7+ years of institutional research experience across dedicated healthcare-focused investment platforms. Maintained by [HHFinAi](https://github.com/HHFinAi).
+Authored by a senior buy-side healthcare equity analyst with 7+ years of institutional research experience across dedicated healthcare-focused investment platforms. Created by [HHFinAi](https://github.com/HHFinAi).
 
 Contributions, issues, and feature requests are welcome through the GitHub issues tab. Proposed new prompts should follow the existing schema (id, title, tags, use-when cue, reasoning scaffold, prompt text, expected inputs, expected output format).
 
@@ -153,4 +153,4 @@ This library is published for educational and professional reference purposes. I
 
 ---
 
-*Healthcare Equity Analyst Prompt Library v1.4 — 113 prompts across 16 categories with 11 workflow chains. Maintained at [github.com/HHFinAi](https://github.com/HHFinAi).*
+*Healthcare Equity Analyst Prompt Library v1.4 — 113 prompts across 16 categories with 11 workflow chains. Created at [github.com/HHFinAi](https://github.com/HHFinAi).*
