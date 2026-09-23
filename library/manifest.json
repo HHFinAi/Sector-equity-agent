@@ -1,0 +1,707 @@
+{
+  "schema_version": 1,
+  "prompt_count": 113,
+  "original_sha256": "11e5f685ca5f721c4afc21b2e1a6f2d8314ff7dddb4f85791c800f9afafd6e74",
+  "parts": [
+    {
+      "path": "library/sections/000.md",
+      "id": null,
+      "title": "Introduction"
+    },
+    {
+      "path": "library/sections/001.md",
+      "id": null,
+      "title": "About this library"
+    },
+    {
+      "path": "library/sections/002.md",
+      "id": null,
+      "title": "Tag taxonomy"
+    },
+    {
+      "path": "library/sections/003.md",
+      "id": null,
+      "title": "Standing instructions for all prompts in this library"
+    },
+    {
+      "path": "library/sections/004.md",
+      "id": null,
+      "title": "Standing instructions (compact variant)"
+    },
+    {
+      "path": "library/sections/005.md",
+      "id": null,
+      "title": "Contents"
+    },
+    {
+      "path": "library/sections/006.md",
+      "id": null,
+      "title": "Coverage matrix"
+    },
+    {
+      "path": "library/sections/007.md",
+      "id": null,
+      "title": "1. Initiation of Coverage"
+    },
+    {
+      "path": "prompts/INIT-01.md",
+      "id": "INIT-01",
+      "title": "30-Minute Name Scoping Memo"
+    },
+    {
+      "path": "prompts/INIT-02.md",
+      "id": "INIT-02",
+      "title": "Full Initiation Memo Skeleton"
+    },
+    {
+      "path": "prompts/INIT-03.md",
+      "id": "INIT-03",
+      "title": "Variant Perception Generator"
+    },
+    {
+      "path": "prompts/INIT-04.md",
+      "id": "INIT-04",
+      "title": "Industry Primer in 90 Minutes"
+    },
+    {
+      "path": "prompts/INIT-05.md",
+      "id": "INIT-05",
+      "title": "Bull / Base / Bear Decomposition with Probability Weights"
+    },
+    {
+      "path": "prompts/INIT-06.md",
+      "id": "INIT-06",
+      "title": "Biotech-Specific Initiation Layer"
+    },
+    {
+      "path": "prompts/INIT-07.md",
+      "id": "INIT-07",
+      "title": "Medtech-Specific Initiation Layer"
+    },
+    {
+      "path": "library/sections/015.md",
+      "id": null,
+      "title": "2. Earnings Workflows — Preview, Live, and Post"
+    },
+    {
+      "path": "prompts/EARN-01.md",
+      "id": "EARN-01",
+      "title": "Earnings Preview Note (T-7)"
+    },
+    {
+      "path": "prompts/EARN-02.md",
+      "id": "EARN-02",
+      "title": "Buy-Side KPI Tracker Build"
+    },
+    {
+      "path": "prompts/EARN-03.md",
+      "id": "EARN-03",
+      "title": "Live-Call Triage Sheet"
+    },
+    {
+      "path": "prompts/EARN-04.md",
+      "id": "EARN-04",
+      "title": "Post-Print Thesis Update Memo"
+    },
+    {
+      "path": "prompts/EARN-05.md",
+      "id": "EARN-05",
+      "title": "Guide Decomposition and Path-to-Number Test"
+    },
+    {
+      "path": "prompts/EARN-06.md",
+      "id": "EARN-06",
+      "title": "Biotech Quarterly Cash and Catalyst Refresh"
+    },
+    {
+      "path": "prompts/EARN-07.md",
+      "id": "EARN-07",
+      "title": "Managed Care MLR Bridge"
+    },
+    {
+      "path": "library/sections/023.md",
+      "id": null,
+      "title": "3. Management Meeting Prep"
+    },
+    {
+      "path": "prompts/MGMT-01.md",
+      "id": "MGMT-01",
+      "title": "1-on-1 Question Stack"
+    },
+    {
+      "path": "prompts/MGMT-02.md",
+      "id": "MGMT-02",
+      "title": "What Has Already Been Asked? Filter"
+    },
+    {
+      "path": "prompts/MGMT-03.md",
+      "id": "MGMT-03",
+      "title": "Site Visit Brief"
+    },
+    {
+      "path": "prompts/MGMT-04.md",
+      "id": "MGMT-04",
+      "title": "KOL Day / Capital Markets Day Pre-Read"
+    },
+    {
+      "path": "library/sections/028.md",
+      "id": null,
+      "title": "4. Modeling and Valuation"
+    },
+    {
+      "path": "prompts/MOD-01.md",
+      "id": "MOD-01",
+      "title": "DCF Stress Test and Reverse-Engineer"
+    },
+    {
+      "path": "prompts/MOD-02.md",
+      "id": "MOD-02",
+      "title": "Sum-of-the-Parts for Diversified Pharma or Medtech"
+    },
+    {
+      "path": "prompts/MOD-03.md",
+      "id": "MOD-03",
+      "title": "Risk-Adjusted NPV (rNPV) Model for a Biotech Asset"
+    },
+    {
+      "path": "prompts/MOD-04.md",
+      "id": "MOD-04",
+      "title": "Patent Cliff and LOE Bridge for Large-Cap Pharma"
+    },
+    {
+      "path": "prompts/MOD-05.md",
+      "id": "MOD-05",
+      "title": "Medtech Razor-Blade Model"
+    },
+    {
+      "path": "prompts/MOD-06.md",
+      "id": "MOD-06",
+      "title": "Tools and Diagnostics Capex-Cycle Model"
+    },
+    {
+      "path": "prompts/MOD-07.md",
+      "id": "MOD-07",
+      "title": "MA Star Ratings and Bid Cycle Model"
+    },
+    {
+      "path": "prompts/MOD-08.md",
+      "id": "MOD-08",
+      "title": "Digital Health Unit Economics Stress Test"
+    },
+    {
+      "path": "prompts/MOD-09.md",
+      "id": "MOD-09",
+      "title": "Working Capital and Cash Conversion Forensics"
+    },
+    {
+      "path": "prompts/MOD-10.md",
+      "id": "MOD-10",
+      "title": "Scenario Construction as a Discipline"
+    },
+    {
+      "path": "library/sections/039.md",
+      "id": null,
+      "title": "5. Thesis Development and Pressure-Testing"
+    },
+    {
+      "path": "prompts/THES-01.md",
+      "id": "THES-01",
+      "title": "Pre-Mortem on a Long Thesis"
+    },
+    {
+      "path": "prompts/THES-02.md",
+      "id": "THES-02",
+      "title": "Steel-Man the Short Case"
+    },
+    {
+      "path": "prompts/THES-03.md",
+      "id": "THES-03",
+      "title": "Thesis Decomposition into Testable Claims"
+    },
+    {
+      "path": "prompts/THES-04.md",
+      "id": "THES-04",
+      "title": "Regime Map Stress Test"
+    },
+    {
+      "path": "prompts/THES-05.md",
+      "id": "THES-05",
+      "title": "Disconfirming Evidence Search Plan"
+    },
+    {
+      "path": "library/sections/045.md",
+      "id": null,
+      "title": "6. Sell Discipline and Risk Monitoring"
+    },
+    {
+      "path": "prompts/SELL-01.md",
+      "id": "SELL-01",
+      "title": "Sell Discipline Scorecard"
+    },
+    {
+      "path": "prompts/SELL-02.md",
+      "id": "SELL-02",
+      "title": "Thesis-Breaking Signal Watchlist"
+    },
+    {
+      "path": "prompts/SELL-03.md",
+      "id": "SELL-03",
+      "title": "Position Sizing Sanity Check"
+    },
+    {
+      "path": "prompts/SELL-04.md",
+      "id": "SELL-04",
+      "title": "Single-Name Thesis Post-Mortem"
+    },
+    {
+      "path": "prompts/SELL-05.md",
+      "id": "SELL-05",
+      "title": "Book-Wide Annual Post-Mortem and Process Audit"
+    },
+    {
+      "path": "library/sections/051.md",
+      "id": null,
+      "title": "7. Sell-Side Synthesis and Triangulation"
+    },
+    {
+      "path": "prompts/SS-01.md",
+      "id": "SS-01",
+      "title": "Multi-Broker Note Triangulation"
+    },
+    {
+      "path": "prompts/SS-02.md",
+      "id": "SS-02",
+      "title": "Initiation Note Decoder"
+    },
+    {
+      "path": "prompts/SS-03.md",
+      "id": "SS-03",
+      "title": "Conference Call Cross-Read"
+    },
+    {
+      "path": "library/sections/055.md",
+      "id": null,
+      "title": "8. Expert Network — Prep, Live, and Debrief"
+    },
+    {
+      "path": "prompts/EN-01.md",
+      "id": "EN-01",
+      "title": "Expert Call Prep Brief"
+    },
+    {
+      "path": "prompts/EN-02.md",
+      "id": "EN-02",
+      "title": "Post-Call Debrief and Triangulation"
+    },
+    {
+      "path": "prompts/EN-03.md",
+      "id": "EN-03",
+      "title": "Expert Network Scoping Plan"
+    },
+    {
+      "path": "prompts/EN-04.md",
+      "id": "EN-04",
+      "title": "Expert-Management Divergence Triangulation"
+    },
+    {
+      "path": "library/sections/060.md",
+      "id": null,
+      "title": "9. Screening — Quant and Qualitative"
+    },
+    {
+      "path": "prompts/SCR-01.md",
+      "id": "SCR-01",
+      "title": "Bloomberg / FactSet Healthcare Idea Screen Builder"
+    },
+    {
+      "path": "prompts/SCR-02.md",
+      "id": "SCR-02",
+      "title": "Catalyst Calendar Screen"
+    },
+    {
+      "path": "prompts/SCR-03.md",
+      "id": "SCR-03",
+      "title": "Hidden Compounder Screen"
+    },
+    {
+      "path": "prompts/SCR-04.md",
+      "id": "SCR-04",
+      "title": "Thematic Beneficiary Screen"
+    },
+    {
+      "path": "prompts/SCR-05.md",
+      "id": "SCR-05",
+      "title": "Activist Investor Target Screen"
+    },
+    {
+      "path": "prompts/SCR-06.md",
+      "id": "SCR-06",
+      "title": "13F Institutional Ownership Delta Scanner"
+    },
+    {
+      "path": "prompts/SCR-07.md",
+      "id": "SCR-07",
+      "title": "Cross-Sector Correlation Identifier"
+    },
+    {
+      "path": "library/sections/068.md",
+      "id": null,
+      "title": "10. Thematic Research"
+    },
+    {
+      "path": "prompts/THM-01.md",
+      "id": "THM-01",
+      "title": "Theme Validation Framework"
+    },
+    {
+      "path": "prompts/THM-02.md",
+      "id": "THM-02",
+      "title": "TAM Bottoms-Up Build"
+    },
+    {
+      "path": "prompts/THM-03.md",
+      "id": "THM-03",
+      "title": "Thematic Basket Construction"
+    },
+    {
+      "path": "library/sections/072.md",
+      "id": null,
+      "title": "11. Portfolio Construction and Risk"
+    },
+    {
+      "path": "prompts/PORT-01.md",
+      "id": "PORT-01",
+      "title": "Healthcare Sleeve Positioning Review"
+    },
+    {
+      "path": "prompts/PORT-02.md",
+      "id": "PORT-02",
+      "title": "Catalyst Concentration and Path Dependence Map"
+    },
+    {
+      "path": "prompts/PORT-03.md",
+      "id": "PORT-03",
+      "title": "Pair Trade Construction"
+    },
+    {
+      "path": "prompts/PORT-04.md",
+      "id": "PORT-04",
+      "title": "Borrow, Float, and Short Interest Analysis"
+    },
+    {
+      "path": "prompts/PORT-05.md",
+      "id": "PORT-05",
+      "title": "Constructive Disagreement with Portfolio Manager on Sizing or Thesis"
+    },
+    {
+      "path": "prompts/PORT-06.md",
+      "id": "PORT-06",
+      "title": "Defending a Contrarian Thesis at Investment Committee"
+    },
+    {
+      "path": "library/sections/079.md",
+      "id": null,
+      "title": "12. ESG Integration and Stewardship"
+    },
+    {
+      "path": "prompts/ESG-01.md",
+      "id": "ESG-01",
+      "title": "Healthcare Materiality Map"
+    },
+    {
+      "path": "prompts/ESG-02.md",
+      "id": "ESG-02",
+      "title": "Stewardship Engagement Plan"
+    },
+    {
+      "path": "prompts/ESG-03.md",
+      "id": "ESG-03",
+      "title": "Drug Pricing and IRA Exposure Map"
+    },
+    {
+      "path": "prompts/ESG-04.md",
+      "id": "ESG-04",
+      "title": "Access to Medicine Index and EM Pricing Strategy Review"
+    },
+    {
+      "path": "prompts/ESG-05.md",
+      "id": "ESG-05",
+      "title": "Healthcare Climate Risk and Decarbonisation Pathway Assessment"
+    },
+    {
+      "path": "library/sections/085.md",
+      "id": null,
+      "title": "13. Client Communication and Compliance"
+    },
+    {
+      "path": "prompts/COMM-01.md",
+      "id": "COMM-01",
+      "title": "IC Memo Draft"
+    },
+    {
+      "path": "prompts/COMM-02.md",
+      "id": "COMM-02",
+      "title": "Quarterly Letter Section Draft"
+    },
+    {
+      "path": "prompts/COMM-03.md",
+      "id": "COMM-03",
+      "title": "Quick-Reaction Internal Note"
+    },
+    {
+      "path": "prompts/COMM-04.md",
+      "id": "COMM-04",
+      "title": "Translate Technical Biology for Generalist PMs"
+    },
+    {
+      "path": "prompts/COMM-05.md",
+      "id": "COMM-05",
+      "title": "MNPI Scrubbing Audit for Client Communications"
+    },
+    {
+      "path": "prompts/COMM-06.md",
+      "id": "COMM-06",
+      "title": "Disclosure and Conflict of Interest Check"
+    },
+    {
+      "path": "prompts/COMM-07.md",
+      "id": "COMM-07",
+      "title": "Public Speaking and Conference Pre-Flight"
+    },
+    {
+      "path": "library/sections/093.md",
+      "id": null,
+      "title": "14. Sub-Sector Specific Workflows"
+    },
+    {
+      "path": "prompts/SUB-BIO-01.md",
+      "id": "SUB-BIO-01",
+      "title": "Phase 3 Readout Pre-Mortem"
+    },
+    {
+      "path": "prompts/SUB-BIO-02.md",
+      "id": "SUB-BIO-02",
+      "title": "FDA AdCom Prep"
+    },
+    {
+      "path": "prompts/SUB-BIO-03.md",
+      "id": "SUB-BIO-03",
+      "title": "Conference Abstract Triage"
+    },
+    {
+      "path": "prompts/SUB-BIO-04.md",
+      "id": "SUB-BIO-04",
+      "title": "Target Product Profile (TPP) Interrogation"
+    },
+    {
+      "path": "prompts/SUB-BIO-05.md",
+      "id": "SUB-BIO-05",
+      "title": "CMC and COGS Scalability Check"
+    },
+    {
+      "path": "prompts/SUB-BIO-06.md",
+      "id": "SUB-BIO-06",
+      "title": "Freedom to Operate (FTO) IP Analysis"
+    },
+    {
+      "path": "prompts/SUB-BIO-07.md",
+      "id": "SUB-BIO-07",
+      "title": "FDA Meeting History Risk Extraction"
+    },
+    {
+      "path": "prompts/SUB-BIO-08.md",
+      "id": "SUB-BIO-08",
+      "title": "Post-Approval Label Delta Analyser"
+    },
+    {
+      "path": "prompts/SUB-PHA-01.md",
+      "id": "SUB-PHA-01",
+      "title": "Pipeline Replenishment Audit"
+    },
+    {
+      "path": "prompts/SUB-PHA-02.md",
+      "id": "SUB-PHA-02",
+      "title": "GLP-1 Class Dynamics Map"
+    },
+    {
+      "path": "prompts/SUB-PHA-03.md",
+      "id": "SUB-PHA-03",
+      "title": "TRx vs NRx Divergence Monitor"
+    },
+    {
+      "path": "prompts/SUB-PHA-04.md",
+      "id": "SUB-PHA-04",
+      "title": "Gross-to-Net (GTN) Margin Erosion Analysis"
+    },
+    {
+      "path": "prompts/SUB-PHA-05.md",
+      "id": "SUB-PHA-05",
+      "title": "Biosimilar Erosion Curve Modeller"
+    },
+    {
+      "path": "prompts/SUB-MED-01.md",
+      "id": "SUB-MED-01",
+      "title": "Procedure Volume Recovery Tracker"
+    },
+    {
+      "path": "prompts/SUB-MED-02.md",
+      "id": "SUB-MED-02",
+      "title": "Reimbursement and Coding Change Impact"
+    },
+    {
+      "path": "prompts/SUB-MED-03.md",
+      "id": "SUB-MED-03",
+      "title": "510(k) Predicate Validity Check"
+    },
+    {
+      "path": "prompts/SUB-MED-04.md",
+      "id": "SUB-MED-04",
+      "title": "De Novo vs PMA Regulatory Pathway Risk"
+    },
+    {
+      "path": "prompts/SUB-MED-05.md",
+      "id": "SUB-MED-05",
+      "title": "Average Selling Price (ASP) Deflation Analysis"
+    },
+    {
+      "path": "prompts/SUB-SVC-01.md",
+      "id": "SUB-SVC-01",
+      "title": "Hospital Operator Earnings Cross-Read"
+    },
+    {
+      "path": "prompts/SUB-SVC-02.md",
+      "id": "SUB-SVC-02",
+      "title": "Medicare Advantage Bid Cycle Tracker"
+    },
+    {
+      "path": "prompts/SUB-SVC-03.md",
+      "id": "SUB-SVC-03",
+      "title": "Vertical Integration MLR Shifting"
+    },
+    {
+      "path": "prompts/SUB-SVC-04.md",
+      "id": "SUB-SVC-04",
+      "title": "Value-Based Care Capitation Tracking"
+    },
+    {
+      "path": "prompts/SUB-TLS-01.md",
+      "id": "SUB-TLS-01",
+      "title": "Bioprocessing Cycle Tracker"
+    },
+    {
+      "path": "prompts/SUB-TLS-02.md",
+      "id": "SUB-TLS-02",
+      "title": "NGS Instrument vs Consumables Mix Forecast"
+    },
+    {
+      "path": "prompts/SUB-TLS-03.md",
+      "id": "SUB-TLS-03",
+      "title": "LDT Regulatory Oversight Impact"
+    },
+    {
+      "path": "prompts/SUB-TLS-04.md",
+      "id": "SUB-TLS-04",
+      "title": "IVD Reagent Pull-Through Rate Calculator"
+    },
+    {
+      "path": "prompts/SUB-TLS-05.md",
+      "id": "SUB-TLS-05",
+      "title": "Companion Diagnostic Linkage and Precision Medicine Coupling"
+    },
+    {
+      "path": "prompts/SUB-DIG-01.md",
+      "id": "SUB-DIG-01",
+      "title": "Enterprise Health-Tech Sales Cycle Diligence"
+    },
+    {
+      "path": "prompts/SUB-DIG-02.md",
+      "id": "SUB-DIG-02",
+      "title": "AI/ML in Healthcare Investability Test"
+    },
+    {
+      "path": "prompts/SUB-DIG-03.md",
+      "id": "SUB-DIG-03",
+      "title": "Health Equity and Digital Divide Assessment"
+    },
+    {
+      "path": "library/sections/124.md",
+      "id": null,
+      "title": "15. Technical System Integration"
+    },
+    {
+      "path": "prompts/TECH-01.md",
+      "id": "TECH-01",
+      "title": "Bloomberg BQL Syntax Generator for Healthcare"
+    },
+    {
+      "path": "prompts/TECH-02.md",
+      "id": "TECH-02",
+      "title": "Bloomberg Catalyst and Event Calendar Query"
+    },
+    {
+      "path": "prompts/TECH-03.md",
+      "id": "TECH-03",
+      "title": "FactSet Universal Screening for Healthcare"
+    },
+    {
+      "path": "prompts/TECH-04.md",
+      "id": "TECH-04",
+      "title": "FactSet Document Search for Transcript Mining"
+    },
+    {
+      "path": "prompts/TECH-05.md",
+      "id": "TECH-05",
+      "title": "SEC EDGAR Autonomous Agent Configuration"
+    },
+    {
+      "path": "prompts/TECH-06.md",
+      "id": "TECH-06",
+      "title": "ClinicalTrials.gov Agent Query Construction"
+    },
+    {
+      "path": "library/sections/131.md",
+      "id": null,
+      "title": "16. International Coverage"
+    },
+    {
+      "path": "prompts/INTL-01.md",
+      "id": "INTL-01",
+      "title": "European HTA Pathway Mapping"
+    },
+    {
+      "path": "prompts/INTL-02.md",
+      "id": "INTL-02",
+      "title": "Japanese Reimbursement Cycle and Price Revision Analysis"
+    },
+    {
+      "path": "prompts/INTL-03.md",
+      "id": "INTL-03",
+      "title": "Chinese Biotech Licensing Economics and BIOSECURE Pass-Through"
+    },
+    {
+      "path": "prompts/INTL-04.md",
+      "id": "INTL-04",
+      "title": "UK-Specific Healthcare Dynamics for a London-Based Global Mandate"
+    },
+    {
+      "path": "library/sections/136.md",
+      "id": null,
+      "title": "Appendix A — Tag Index"
+    },
+    {
+      "path": "library/sections/137.md",
+      "id": null,
+      "title": "Appendix B — Workflow Chains"
+    },
+    {
+      "path": "library/sections/138.md",
+      "id": null,
+      "title": "Appendix C — Source-Data Fidelity Caveats"
+    },
+    {
+      "path": "library/sections/139.md",
+      "id": null,
+      "title": "Appendix D — Prompt Engineering Guidance"
+    }
+  ]
+}
