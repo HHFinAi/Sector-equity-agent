@@ -1,0 +1,41 @@
+name: Validate healthcare library integrity
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  validate:
+    if: github.event_name != 'push' || github.ref != 'refs/heads/maintenance/research-reliability-2026-09-23'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m unittest discover -s tests -v
+      - run: python tools/library_build.py check
+      - run: python -m json.tool evaluations/cases.json > /dev/null
+  initialize-prompt-files:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/maintenance/research-reliability-2026-09-23'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: maintenance/research-reliability-2026-09-23
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m unittest discover -s tests -v
+      - run: python tools/library_build.py init
+      - run: python tools/library_build.py check
+      - name: Commit lossless split to maintenance branch only
+        run: |
+          test "${GITHUB_REF}" = "refs/heads/maintenance/research-reliability-2026-09-23"
+          git add -- prompts library/sections library/manifest.json library/healthcare_prompt_library.md
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Split 113 prompts with byte-identical compiled library and ordered manifest'
+            git push origin HEAD:maintenance/research-reliability-2026-09-23
+          fi

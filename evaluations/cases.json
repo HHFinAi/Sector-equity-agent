@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "run_status": "NOT_RUN",
+  "source_fixture": "examples/healthcare_prompt_library_v1.4_examples.md",
+  "dimensions": ["factual_accuracy", "numerical_accuracy", "citation_support", "missing_data_handling", "analytical_coverage"],
+  "score_range": [0, 4],
+  "critical_failure": "Fabricated material fact, unsupported cited claim, materially wrong calculation or undisclosed missing essential input",
+  "cases": [
+    {"id":"EARN-04", "scenario":"Post-print thesis update", "checks":["Use only supplied mock facts", "Reconcile margin movement and forecast impact", "Do not invent consensus or a beat/miss when absent", "Separate operational facts from thesis inference"]},
+    {"id":"SUB-BIO-01", "scenario":"Phase 3 IBD pre-mortem", "checks":["Keep pre-readout cutoff", "Separate statistical success from clinical relevance", "Identify missing protocol/SAP or uncertainty", "Do not treat an assumed effect size as observed trial data"]},
+    {"id":"MGMT-01", "scenario":"Structural-heart CFO meeting preparation", "checks":["Prioritize questions tied to investment assumptions", "Preserve supplied figures and periods", "Do not invent management answers", "Identify what would falsify the thesis"]},
+    {"id":"COMM-01", "scenario":"Liquid-biopsy IC memo", "checks":["Show valuation and risk assumptions", "Reconcile proposed position context", "Separate fictional inputs from inference", "Retain downside, compliance and missing-data caveats"]}
+  ]
+}
