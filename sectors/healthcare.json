@@ -1,0 +1,194 @@
+{
+  "name": "Healthcare",
+  "version": "1.0",
+  "subsectors": {
+    "biotech": {
+      "drivers": [
+        "clinical benefit and safety",
+        "trial design and endpoints",
+        "regulatory status",
+        "commercial adoption",
+        "cash runway and dilution"
+      ],
+      "kpis": [
+        "effect size and confidence interval",
+        "endpoint hierarchy and multiplicity",
+        "risk-adjusted pipeline value",
+        "net cash and burn",
+        "launch uptake and net price"
+      ],
+      "valuation": [
+        "asset-level rNPV",
+        "cash and corporate-cost bridge",
+        "reverse probability/peak-sales assumptions"
+      ],
+      "traps": [
+        "cross-trial ranking without adjustment",
+        "assuming registry completion is readout",
+        "risking unavoidable spend at approval probability"
+      ]
+    },
+    "pharma": {
+      "drivers": [
+        "patent/exclusivity loss",
+        "pipeline replacement",
+        "pricing and net rebates",
+        "geographic mix",
+        "capital allocation"
+      ],
+      "kpis": [
+        "product sales by geography",
+        "loss-of-exclusivity exposure",
+        "pipeline milestones",
+        "R&D and commercial productivity",
+        "FCF conversion"
+      ],
+      "valuation": [
+        "product DCF",
+        "SOTP",
+        "normalized earnings and FCF"
+      ],
+      "traps": [
+        "double-counting pipeline assets",
+        "confusing list and net price",
+        "ignoring royalty and licensing obligations"
+      ]
+    },
+    "medtech": {
+      "drivers": [
+        "procedure growth",
+        "installed base and utilization",
+        "reimbursement",
+        "product cycle",
+        "supply chain and pricing"
+      ],
+      "kpis": [
+        "organic growth",
+        "procedure volumes",
+        "placement and utilization",
+        "recurring revenue",
+        "gross margin"
+      ],
+      "valuation": [
+        "DCF",
+        "comparable-definition EV/EBITDA",
+        "growth and margin sensitivity"
+      ],
+      "traps": [
+        "confusing installed base with active use",
+        "ignoring recall/safety issues",
+        "mixing regulatory clearance with reimbursement"
+      ]
+    },
+    "services-payors": {
+      "drivers": [
+        "medical utilization",
+        "reimbursement and rates",
+        "risk adjustment",
+        "labor intensity",
+        "payer/provider contract mix"
+      ],
+      "kpis": [
+        "medical loss ratio",
+        "membership",
+        "same-facility growth",
+        "labor cost",
+        "cash collections"
+      ],
+      "valuation": [
+        "DCF",
+        "normalized earnings",
+        "EV/EBITDA with consistent lease treatment"
+      ],
+      "traps": [
+        "mixing GAAP and adjusted metrics",
+        "ignoring reporting lags",
+        "treating proposed payment rules as final"
+      ]
+    },
+    "tools-diagnostics": {
+      "drivers": [
+        "biopharma funding",
+        "research and production spending",
+        "instrument placement",
+        "consumables pull-through",
+        "diagnostic reimbursement"
+      ],
+      "kpis": [
+        "orders and book-to-bill",
+        "organic growth",
+        "consumables share",
+        "inventory and destocking",
+        "test volume and net reimbursement"
+      ],
+      "valuation": [
+        "DCF",
+        "mid-cycle EV/EBITDA",
+        "installed-base economics"
+      ],
+      "traps": [
+        "treating restocking as secular growth",
+        "double-counting instrument and reagent demand",
+        "confusing test validity and clinical utility"
+      ]
+    },
+    "digital-health": {
+      "drivers": [
+        "contract retention",
+        "deployment and adoption",
+        "buyer economics",
+        "reimbursement dependence",
+        "integration and distribution"
+      ],
+      "kpis": [
+        "retention with denominator",
+        "contracted versus recognized revenue",
+        "gross margin",
+        "customer acquisition and payback",
+        "FCF and dilution"
+      ],
+      "valuation": [
+        "DCF when supportable",
+        "unit-economics bridge",
+        "revenue multiples only with growth/quality controls"
+      ],
+      "traps": [
+        "using bookings as revenue",
+        "unverified clinical/AI effectiveness",
+        "ignoring implementation costs and churn"
+      ]
+    }
+  },
+  "source_requests": [
+    {
+      "domain": "reported financials",
+      "preferred": "SEC/issuer filings and original earnings materials",
+      "request": "Dated filings, periods, KPI definitions, cash/debt/shares, guidance and prior comparables."
+    },
+    {
+      "domain": "clinical evidence",
+      "preferred": "ClinicalTrials.gov/protocol plus original trial results or publications",
+      "request": "Registry identifier, version date, endpoints, populations, effect sizes, uncertainty and safety."
+    },
+    {
+      "domain": "regulatory status",
+      "preferred": "FDA/EMA or relevant regulator primary records",
+      "request": "Current decision record, label, review status and documented next-event window."
+    },
+    {
+      "domain": "reimbursement",
+      "preferred": "CMS or relevant payer/HTA primary material",
+      "request": "Policy version, proposal/final status, effective date, payment unit and covered population."
+    },
+    {
+      "domain": "market expectations",
+      "preferred": "Authorized Bloomberg/FactSet or other dated market-data export",
+      "request": "Price timestamp, currency, diluted shares, consensus period and metric definitions; never assume access."
+    },
+    {
+      "domain": "macro and policy",
+      "preferred": "Central bank, official statistics and election authorities",
+      "request": "Relevant meeting, inflation/employment release and election-policy risk dates verified at run time."
+    }
+  ]
+}

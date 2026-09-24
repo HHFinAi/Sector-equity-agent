@@ -1,0 +1,113 @@
+{
+  "sector-deep-dive": {
+    "purpose": "Sector structure, expectations, company exposures and investable hypotheses.",
+    "stages": [
+      "mandate",
+      "evidence",
+      "sector_map",
+      "drivers",
+      "company_crosswalk",
+      "valuation",
+      "catalysts",
+      "challenge",
+      "synthesis"
+    ],
+    "outputs": [
+      "sector memo",
+      "company exposure crosswalk",
+      "scenario workpaper",
+      "catalysts and thesis-breakers"
+    ]
+  },
+  "idea-screen": {
+    "purpose": "Prioritize research candidates within a supplied sector universe, not execute trades.",
+    "stages": [
+      "mandate",
+      "evidence",
+      "sector_map",
+      "drivers",
+      "company_crosswalk",
+      "challenge",
+      "synthesis"
+    ],
+    "outputs": [
+      "research watchlist",
+      "beneficiary/vulnerable/unknown classification",
+      "diligence requests"
+    ]
+  },
+  "company-initiation": {
+    "purpose": "Connect one or more companies to industry economics and a falsifiable underwriting case.",
+    "stages": [
+      "mandate",
+      "evidence",
+      "sector_map",
+      "company_crosswalk",
+      "valuation",
+      "catalysts",
+      "challenge",
+      "synthesis"
+    ],
+    "outputs": [
+      "initiation memo",
+      "forecast sensitivities",
+      "valuation scenarios",
+      "thesis-breakers"
+    ]
+  },
+  "earnings-readthrough": {
+    "purpose": "Interpret supplied earnings evidence across the sector and update model assumptions.",
+    "stages": [
+      "mandate",
+      "evidence",
+      "drivers",
+      "company_crosswalk",
+      "valuation",
+      "catalysts",
+      "challenge",
+      "synthesis"
+    ],
+    "outputs": [
+      "actuals/expectations assessment",
+      "peer cross-reads",
+      "model-impact note",
+      "next-event checklist"
+    ]
+  },
+  "catalyst-review": {
+    "purpose": "Underwrite a clinical, regulatory, policy or commercial event and its cross-sector implications.",
+    "stages": [
+      "mandate",
+      "evidence",
+      "drivers",
+      "company_crosswalk",
+      "valuation",
+      "catalysts",
+      "challenge",
+      "synthesis"
+    ],
+    "outputs": [
+      "event scenario memo",
+      "source-backed timing windows",
+      "valuation implications",
+      "falsification tests"
+    ]
+  },
+  "thesis-monitor": {
+    "purpose": "Compare a supplied prior thesis with newly supplied evidence in a one-shot run.",
+    "stages": [
+      "mandate",
+      "evidence",
+      "drivers",
+      "company_crosswalk",
+      "catalysts",
+      "challenge",
+      "synthesis"
+    ],
+    "outputs": [
+      "changed/unchanged/unknown thesis assessment",
+      "trigger breaches",
+      "next verification requests"
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "question": "SYNTHETIC DEMO: Which fictional healthcare businesses warrant further research under a procedure-growth scenario?",
+  "as_of": "2026-09-24",
+  "workflow": "sector-deep-dive",
+  "sector": "healthcare",
+  "geography": "Illustrative United States",
+  "benchmark": "Synthetic healthcare benchmark, not an actual index",
+  "horizon": "12 months; valuation inputs are present-value assumptions",
+  "universe": [
+    {
+      "id": "SYN-MED",
+      "name": "Synthetic Medtech Co (fictional)",
+      "subsector": "medtech"
+    },
+    {
+      "id": "SYN-TOOL",
+      "name": "Synthetic Tools Co (fictional)",
+      "subsector": "tools-diagnostics"
+    }
+  ],
+  "sources": [
+    {
+      "id": "SYN1",
+      "title": "Synthetic company evidence for software tests",
+      "kind": "synthetic",
+      "url": "synthetic://company-packet",
+      "published_at": "2026-09-20",
+      "retrieved_at": "2026-09-24",
+      "period": "Illustrative annual period",
+      "locator": "Fixture paragraph 1",
+      "public": true,
+      "max_age_days": 120,
+      "content": "Fictional inputs only: SYN-MED revenue is 1000 million currency units, cash 100, debt 150, diluted shares 100 million and illustrative price 20 per share. No real security is described."
+    },
+    {
+      "id": "SYN2",
+      "title": "Synthetic sector evidence for software tests",
+      "kind": "synthetic",
+      "url": "synthetic://sector-packet",
+      "published_at": "2026-09-21",
+      "retrieved_at": "2026-09-24",
+      "period": "Illustrative current period",
+      "locator": "Fixture paragraph 1",
+      "public": true,
+      "max_age_days": 30,
+      "content": "Fictional scenario: procedure volume rises while research-tool customers delay purchases. These are invented conditions for demonstrating software behavior, not facts or predictions."
+    }
+  ],
+  "valuation_models": [
+    {
+      "entity": "SYN-MED",
+      "method": "multiple",
+      "currency": "USD",
+      "units": "millions",
+      "basis": "as_of_present_value",
+      "price": 20,
+      "price_as_of": "2026-09-24",
+      "diluted_shares": 100,
+      "cash": 100,
+      "debt": 150,
+      "source_ids": [
+        "SYN1",
+        "SYN2"
+      ],
+      "assumptions_note": "ALL INPUTS ARE SYNTHETIC analyst assumptions. The multiple is a present-value forward-multiple convention, not a terminal exit multiple. Fixed shares/cash/debt; no live consensus.",
+      "scenarios": [
+        {
+          "name": "bear",
+          "probability": 0.25,
+          "revenue": 900,
+          "ebitda_margin": 0.18,
+          "ev_ebitda": 10
+        },
+        {
+          "name": "base",
+          "probability": 0.5,
+          "revenue": 1100,
+          "ebitda_margin": 0.22,
+          "ev_ebitda": 12
+        },
+        {
+          "name": "bull",
+          "probability": 0.25,
+          "revenue": 1250,
+          "ebitda_margin": 0.25,
+          "ev_ebitda": 14
+        }
+      ]
+    }
+  ]
+}
