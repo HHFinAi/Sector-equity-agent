@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "question": "Replace with a decision-relevant sector research question",
+  "as_of": "2026-09-24",
+  "workflow": "sector-deep-dive",
+  "sector": "healthcare",
+  "geography": "Specify jurisdiction(s)",
+  "benchmark": "Specify benchmark or explicitly state none",
+  "horizon": "Specify investment horizon",
+  "universe": [
+    {
+      "id": "REPLACE",
+      "name": "Replace with verified company name",
+      "subsector": "medtech"
+    }
+  ],
+  "sources": [],
+  "valuation_models": []
+}
