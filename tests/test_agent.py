@@ -59,7 +59,7 @@ class ContractTests(unittest.TestCase):
         data = fixture(); data["sources"] = []
         with self.assertRaisesRegex(ValidationError, "No sources"):
             validate_brief(data)
-        self.assertEqual(len(build_plan(data)["stages"]), 9)
+        self.assertIn("specialist_healthcare", build_plan(data)["stages"])
 
     def test_future_publication_rejected(self):
         data = fixture(); data["sources"][0]["published_at"] = "2026-09-25"

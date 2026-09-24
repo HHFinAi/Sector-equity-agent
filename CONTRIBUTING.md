@@ -1,7 +1,9 @@
 # Contributing
 
-Changes should improve a demonstrable research or governance capability, not inflate claims of autonomy. Add an offline regression test for every change to evidence checks, output contracts, valuation math or review behavior. Run `sh ci/test.sh` from the repository root.
+Improve demonstrable research capabilities without inflating autonomy, audit or accuracy claims. Run `sh ci/test.sh` and add offline tests for every evidence, routing, valuation or review change.
 
-Keep prompts concise, source-grounded and explicit about inputs, assumptions, uncertainties and handoffs. A new workflow must end with challenge and synthesis. A new sector pack must document economic drivers, comparable KPIs, valuation suitability, primary-source needs and analytical traps. The generic template is not a substitute for domain review.
+All eleven sectors are first-class. A new or revised subsector needs a specific economic lens, comparable KPIs, appropriate implemented valuation methods, source requirements and falsifiable questions. Do not present custom research groupings as official issuer classifications. A permitted valuation method is a guardrail, not a statement that it is suitable for every company.
 
-Never commit credentials, private research packets, patient information, raw paid-provider exports or real run outputs without a separate licensing/privacy review. Do not change repository visibility, activate network calls by default or remove the human-review gate. Preserve the historical reference collection unless a change specifically concerns that archive.
+Every workflow ends with challenge and synthesis. Preserve original evidence IDs and scope, distinguish assumptions, and carry unresolved gaps through final status. Cross-sector comparisons must not mechanically combine unlike multiples or assume performance/portfolio data exist. Keep financial materiality, sustainability outcomes and mandate eligibility separate.
+
+Never commit credentials, private packets, patient information or unlicensed exports. Do not change repository visibility, enable networking by default, remove human review or rewrite historical archives during unrelated changes. The local manifest is not a cryptographic signature or authenticated review system; do not market it as one.

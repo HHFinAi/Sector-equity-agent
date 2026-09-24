@@ -1,13 +1,17 @@
 # Changelog
 
-## 2.0.0 — 2026-09-24
+## 3.0.0 — 2026-09-24
 
-Replaced the prompt-library-only project interface with **Sector Research Agent**, a healthcare-first, sector-extensible evidence workflow.
+Rebuilt the healthcare-first project as **Full Sector Research Agent**. All eleven major equity sectors now have dedicated specialists, with 79 custom research subsectors and distinct business-model lenses, KPIs, valuation methods, causal transmission tests, primary-source requests, materiality tests and diligence questions.
 
-Added nine specialist prompt stages, six workflows, six healthcare subsector modules and a generic template; standard-library Python orchestration and CLI; explicit no-key demo and opt-in OpenAI structured-output adapter; source/date/citation checks; deterministic scenario/DCF/rNPV helpers and conditional reverse valuation; frozen run artifacts, hash manifests and human-review self-attestation; 43 offline regression tests and implementation/limitation documentation.
+Added twelve workflows and actual single/multi/all-sector routing; scoped specialist contexts; expectations, value-chain, cross-sector, materiality and factor-risk prompts; P/E, P/TBV, DDM, property NAV and FFO/AFFO equity methods in addition to legacy deterministic helpers; business-model and model-source guards; sector/claim CSV exports; full all-sector synthetic examples and expanded prompt exports. Healthcare is one peer sector, with no implicit healthcare default.
 
-Preserved the original v1.4 collection and examples under `reference/` and retained the MIT license and Git history. Repository name and private visibility are unchanged. Live data retrieval, live model verification, scheduling, portfolio execution and authenticated compliance review are not part of this release.
+Validated 77 offline tests and a 25-stage all-sector demo. Source retrieval and live LLM effectiveness remain unvalidated; no trading or scheduled monitoring was activated. Preserved private visibility, URL, MIT license, reference library and Git history. Recovery branch: `archive/healthcare-first-agent-v2-2026-09-24`.
+
+## 2.0.0
+
+The previous healthcare-first workflow remains recoverable at commit `58bfdfabaa8928e5e7565125b4a74fc8d8498211` and its archive branch.
 
 ## 1.4 and earlier
 
-See `reference/CHANGELOG-v1.4.md` for the original release history.
+The original prompt-library history is in `reference/CHANGELOG-v1.4.md`.

@@ -1,113 +1,294 @@
 {
   "sector-deep-dive": {
-    "purpose": "Sector structure, expectations, company exposures and investable hypotheses.",
+    "purpose": "Underwrite sector structure, company economics and valuation with dedicated sector specialists.",
     "stages": [
       "mandate",
       "evidence",
       "sector_map",
       "drivers",
+      "$specialists",
       "company_crosswalk",
+      "expectations",
+      "valuation",
+      "materiality",
+      "catalysts",
+      "challenge",
+      "synthesis"
+    ],
+    "outputs": [
+      "source-linked research memo",
+      "sector comparison matrix",
+      "claim ledger",
+      "scenario workpaper",
+      "catalysts and thesis-breakers",
+      "human review record"
+    ]
+  },
+  "cross-sector-comparison": {
+    "purpose": "Compare all selected sectors without equating unlike KPIs or valuation multiples.",
+    "stages": [
+      "mandate",
+      "evidence",
+      "sector_map",
+      "drivers",
+      "$specialists",
+      "supply_chain",
+      "company_crosswalk",
+      "expectations",
+      "valuation",
+      "materiality",
+      "cross_sector",
+      "factor_risk",
+      "catalysts",
+      "challenge",
+      "synthesis"
+    ],
+    "outputs": [
+      "source-linked research memo",
+      "sector comparison matrix",
+      "claim ledger",
+      "scenario workpaper",
+      "catalysts and thesis-breakers",
+      "human review record"
+    ]
+  },
+  "macro-sector-transmission": {
+    "purpose": "Trace rates, inflation, growth, FX and commodity scenarios into sector/company economics.",
+    "stages": [
+      "mandate",
+      "evidence",
+      "drivers",
+      "$specialists",
+      "supply_chain",
+      "company_crosswalk",
+      "expectations",
+      "valuation",
+      "cross_sector",
+      "factor_risk",
+      "catalysts",
+      "challenge",
+      "synthesis"
+    ],
+    "outputs": [
+      "source-linked research memo",
+      "sector comparison matrix",
+      "claim ledger",
+      "scenario workpaper",
+      "catalysts and thesis-breakers",
+      "human review record"
+    ]
+  },
+  "sector-rotation-review": {
+    "purpose": "Review supplied sector expectations and cycle evidence; no invented factor betas, performance or trading.",
+    "stages": [
+      "mandate",
+      "evidence",
+      "drivers",
+      "$specialists",
+      "expectations",
+      "valuation",
+      "cross_sector",
+      "factor_risk",
+      "catalysts",
+      "challenge",
+      "synthesis"
+    ],
+    "outputs": [
+      "source-linked research memo",
+      "sector comparison matrix",
+      "claim ledger",
+      "scenario workpaper",
+      "catalysts and thesis-breakers",
+      "human review record"
+    ]
+  },
+  "thematic-value-chain": {
+    "purpose": "Map a theme across sectors, economics and bottlenecks without double-counting end demand.",
+    "stages": [
+      "mandate",
+      "evidence",
+      "sector_map",
+      "drivers",
+      "$specialists",
+      "supply_chain",
+      "company_crosswalk",
+      "expectations",
+      "valuation",
+      "materiality",
+      "cross_sector",
+      "catalysts",
+      "challenge",
+      "synthesis"
+    ],
+    "outputs": [
+      "source-linked research memo",
+      "sector comparison matrix",
+      "claim ledger",
+      "scenario workpaper",
+      "catalysts and thesis-breakers",
+      "human review record"
+    ]
+  },
+  "sustainable-sector-review": {
+    "purpose": "Keep financial materiality, sustainability outcomes and mandate eligibility as separate conclusions.",
+    "stages": [
+      "mandate",
+      "evidence",
+      "sector_map",
+      "$specialists",
+      "supply_chain",
+      "materiality",
+      "company_crosswalk",
+      "expectations",
       "valuation",
       "catalysts",
       "challenge",
       "synthesis"
     ],
     "outputs": [
-      "sector memo",
-      "company exposure crosswalk",
+      "source-linked research memo",
+      "sector comparison matrix",
+      "claim ledger",
       "scenario workpaper",
-      "catalysts and thesis-breakers"
+      "catalysts and thesis-breakers",
+      "human review record"
+    ]
+  },
+  "competitive-landscape": {
+    "purpose": "Compare supply, demand, distribution and returns within the declared research universe.",
+    "stages": [
+      "mandate",
+      "evidence",
+      "sector_map",
+      "$specialists",
+      "supply_chain",
+      "company_crosswalk",
+      "expectations",
+      "materiality",
+      "challenge",
+      "synthesis"
+    ],
+    "outputs": [
+      "source-linked research memo",
+      "sector comparison matrix",
+      "claim ledger",
+      "scenario workpaper",
+      "catalysts and thesis-breakers",
+      "human review record"
     ]
   },
   "idea-screen": {
-    "purpose": "Prioritize research candidates within a supplied sector universe, not execute trades.",
+    "purpose": "Prioritize further research, not automatic investments or unsupported numerical ranks.",
     "stages": [
       "mandate",
       "evidence",
       "sector_map",
       "drivers",
+      "$specialists",
       "company_crosswalk",
+      "expectations",
       "challenge",
       "synthesis"
     ],
     "outputs": [
-      "research watchlist",
-      "beneficiary/vulnerable/unknown classification",
-      "diligence requests"
+      "source-linked research memo",
+      "sector comparison matrix",
+      "claim ledger",
+      "scenario workpaper",
+      "catalysts and thesis-breakers",
+      "human review record"
     ]
   },
   "company-initiation": {
-    "purpose": "Connect one or more companies to industry economics and a falsifiable underwriting case.",
+    "purpose": "Build a company underwriting case with business-model-appropriate sector and valuation lenses.",
     "stages": [
       "mandate",
       "evidence",
       "sector_map",
+      "$specialists",
       "company_crosswalk",
+      "expectations",
       "valuation",
+      "materiality",
       "catalysts",
       "challenge",
       "synthesis"
     ],
     "outputs": [
-      "initiation memo",
-      "forecast sensitivities",
-      "valuation scenarios",
-      "thesis-breakers"
+      "source-linked research memo",
+      "sector comparison matrix",
+      "claim ledger",
+      "scenario workpaper",
+      "catalysts and thesis-breakers",
+      "human review record"
     ]
   },
   "earnings-readthrough": {
-    "purpose": "Interpret supplied earnings evidence across the sector and update model assumptions.",
+    "purpose": "Distinguish actuals, guidance, dated expectations and peer read-throughs.",
     "stages": [
       "mandate",
       "evidence",
-      "drivers",
+      "$specialists",
       "company_crosswalk",
+      "expectations",
       "valuation",
       "catalysts",
       "challenge",
       "synthesis"
     ],
     "outputs": [
-      "actuals/expectations assessment",
-      "peer cross-reads",
-      "model-impact note",
-      "next-event checklist"
+      "source-linked research memo",
+      "sector comparison matrix",
+      "claim ledger",
+      "scenario workpaper",
+      "catalysts and thesis-breakers",
+      "human review record"
     ]
   },
   "catalyst-review": {
-    "purpose": "Underwrite a clinical, regulatory, policy or commercial event and its cross-sector implications.",
+    "purpose": "Underwrite a documented event, timing window, scenarios and thesis-breakers.",
     "stages": [
       "mandate",
       "evidence",
       "drivers",
+      "$specialists",
       "company_crosswalk",
+      "expectations",
       "valuation",
       "catalysts",
+      "factor_risk",
       "challenge",
       "synthesis"
     ],
     "outputs": [
-      "event scenario memo",
-      "source-backed timing windows",
-      "valuation implications",
-      "falsification tests"
+      "source-linked research memo",
+      "sector comparison matrix",
+      "claim ledger",
+      "scenario workpaper",
+      "catalysts and thesis-breakers",
+      "human review record"
     ]
   },
   "thesis-monitor": {
-    "purpose": "Compare a supplied prior thesis with newly supplied evidence in a one-shot run.",
+    "purpose": "One-shot comparison of a supplied prior thesis with new evidence, not a scheduled service.",
     "stages": [
       "mandate",
       "evidence",
+      "$specialists",
       "drivers",
       "company_crosswalk",
+      "expectations",
       "catalysts",
       "challenge",
       "synthesis"
     ],
     "outputs": [
-      "changed/unchanged/unknown thesis assessment",
-      "trigger breaches",
-      "next verification requests"
+      "source-linked research memo",
+      "sector comparison matrix",
+      "claim ledger",
+      "scenario workpaper",
+      "catalysts and thesis-breakers",
+      "human review record"
     ]
   }
 }

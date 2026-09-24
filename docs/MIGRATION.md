@@ -1,17 +1,11 @@
-# Migration from prompt library v1.4
+# Migration: healthcare-first v2 to all-sector v3
 
-The active project is now **Sector Research Agent v2.0.0**. The repository remains `HHFinAi/healthcare-equity-prompt-library`, and the migration does not change its private visibility or account ownership.
+The active project is now **Full Sector Research Agent v3.0.0**, with equal first-class coverage of all eleven major equity sectors. This is not the earlier healthcare pack plus a general template.
 
-The original main-branch commit before replacement is:
+The repository remains `HHFinAi/healthcare-equity-prompt-library`; its private visibility, ownership, MIT license and Git history are unchanged. No repository deletion or force-push is needed. The previous v2 commit is `58bfdfabaa8928e5e7565125b4a74fc8d8498211`, preserved by `archive/healthcare-first-agent-v2-2026-09-24`.
 
-```text
-fcf07f395c0993a1bea1c01539cc2cd8e63fb892
-```
+The original v1.4 collection remains under `reference/` and at `archive/prompt-library-v1.4-2026-09-24`, whose starting commit is `fcf07f395c0993a1bea1c01539cc2cd8e63fb892`. These archives are supplementary historical material, not governing instructions; old platform/model guidance may be outdated.
 
-The original prompt collection, PDF, standing instructions, worked examples, README and changelog are preserved under `reference/`, with original file contents and the MIT license retained. The old root `.DS_Store` is intentionally omitted. The archive is supplementary historical material: platform/model recommendations in it may be outdated and are not governing instructions for the new runtime.
+V3 moves active sector definitions to `sector_agent/sector_data.py` and adds explicit single/multi/all routing, 79 custom research subsectors, sector-scoped specialist calls, twelve workflows, new equity/NAV methods and evidence-scope controls. Earlier single-healthcare briefs remain supported when their subsector ID exists in the new catalog; the active default template is now all-sector. A generic `general` sector is no longer accepted as a substitute for real sector coverage.
 
-The migration adds the executable Python workflow, prompt contracts, six workflow definitions, healthcare/general sector packs, deterministic valuation helpers, synthetic examples, tests, documentation and local review controls. It does not claim that the 113 archived prompts have individually become autonomous tools. They are reusable research references; the nine new specialist stages govern execution.
-
-## Reversibility
-
-A normal descendant commit replaces the active file tree; no force-push or history deletion is required. The original commit remains reachable through Git history. An `archive/prompt-library-v1.4-2026-09-24` branch is created at the original commit as an additional recovery pointer. Restore with a reviewed revert or a new commit based on the original tree, rather than force-resetting shared history.
+Restore through a reviewed revert or a normal descendant commit built from the archive tree. Do not force-reset shared history. Archived v2 outputs remain labeled v2 and are not retrospectively validated by v3 tests.
