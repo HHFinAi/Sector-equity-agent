@@ -6,13 +6,14 @@ import sys
 from pathlib import Path
 from .contracts import ValidationError, load_json, validate_brief, canonical
 from .engine import approve, export_plan, run, verify
-from .models import valuations
+from .valuation import value_models as valuations
 from .provider import DemoProvider, OpenAIProvider
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Healthcare-first, evidence-gated Sector Research Agent")
+    parser = argparse.ArgumentParser(description="All-sector, evidence-gated Sector Research Agent")
     sub = parser.add_subparsers(dest="command", required=True)
+    sub.add_parser("catalog", help="List all supported sectors and research subsectors")
     for command in ("plan", "validate", "run"):
         child = sub.add_parser(command)
         child.add_argument("--brief", required=True, type=Path)
@@ -24,8 +25,8 @@ def main(argv: list[str] | None = None) -> int:
             child.add_argument("--provider", choices=["demo", "openai"], default="demo")
             child.add_argument("--allow-network", action="store_true")
             child.add_argument("--model", default=os.environ.get("OPENAI_MODEL", ""))
-            child.add_argument("--max-calls", type=int, default=16)
-            child.add_argument("--max-input-chars", type=int, default=180_000)
+            child.add_argument("--max-calls", type=int, default=48)
+            child.add_argument("--max-input-chars", type=int, default=750_000)
             child.add_argument("--max-output-tokens", type=int, default=5000)
     for command in ("verify", "approve"):
         child = sub.add_parser(command)
@@ -36,7 +37,11 @@ def main(argv: list[str] | None = None) -> int:
             child.add_argument("--acknowledge-evidence", action="store_true")
     args = parser.parse_args(argv)
     try:
-        if args.command == "verify":
+        if args.command == "catalog":
+            from .sector_data import CATALOG
+            print(canonical({sid: {"name": pack["name"], "subsectors": list(pack["subsectors"])}
+                             for sid, pack in CATALOG["sectors"].items()}))
+        elif args.command == "verify":
             print(canonical(verify(args.run)))
         elif args.command == "approve":
             print(canonical(approve(args.run, args.reviewer, args.note, args.acknowledge_evidence)))

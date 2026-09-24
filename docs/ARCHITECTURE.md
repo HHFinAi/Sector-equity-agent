@@ -1,33 +1,38 @@
-# Architecture and trust boundaries
+# Architecture: a full all-sector workflow agent
 
-## Execution model
+## Scope and planning
 
-This is a bounded sequential **workflow agent**, not nine independently trained models and not an unrestricted autonomous browser. The selected workflow supplies the stage order. Each specialist prompt receives the same frozen source packet, selected sector pack, deterministic model outputs and validated prior-stage responses. In live mode each stage makes a structured-output LLM request through one adapter. Roles represent analytical responsibilities; they do not prove independent judgment.
+The runtime supports a named major sector, `multi` with an explicit `sectors` list, or `all` for all eleven. No sector is silently assumed. The catalog has 79 original research subsectors, each with a business-model lens, KPIs and method allow-list. Its sector-level mandates add transmission mechanisms, primary-source requests, materiality tests, traps and diligence questions. Catalog membership is not verified issuer classification or full market coverage.
 
-1. Validate mandate, sector/universe, source IDs, dates and declared public-data eligibility.
-2. Compute optional analyst-input valuation scenarios deterministically.
-3. Snapshot the brief, plan, sector pack and stage prompts.
-4. Run each stage with bounded context/output/request counts.
-5. Validate schema, claim kinds, known citations, confidence bounds, gap/decision consistency and challenge output.
-6. Render the memo and underlying workpapers; create a file-hash manifest and audit trail.
-7. Stop at DEMO, BLOCKED or NEEDS_HUMAN_REVIEW. Only the separate human command records local sign-off.
+`workflows/catalog.json` contains twelve ordered workflows. `routing.resolve` selects packs; `expand_stages` turns `$specialists` into one stage per selected sector. The full all-sector comparison runs 25 stages: 14 common analytical stages plus eleven dedicated sector specialists. Shorter workflows retain challenge and synthesis at the end.
 
-An invalid model response stops the run and records `error.json`; no final research status is produced. Incomplete/refused LLM responses are never accepted. A valid response with evidence gaps can continue as a partial analysis, but the final run remains BLOCKED and the CLI returns exit code 2. Invalid input/provider failures return code 1. Successful demo or structurally complete output returns code 0; that is not an investment approval.
+`plan` exports the expanded prompts, frozen mandate and stage-response schema. Sector-specialist exports are scoped to that specialist's companies, evidence and pack just as live calls are. Manual host use still requires manual source acquisition and response checks; exported prompts do not grant tools or enforce the Python validator in another interface.
 
-## Modules
+## Runtime
 
-`contracts.py` owns data validation and the stage schema. `models.py` owns simplified deterministic math. `provider.py` owns the no-network fixture and explicit opt-in OpenAI adapter. `engine.py` owns plan export, orchestration, rendering, snapshots, hash verification and review. `__main__.py` exposes plan/validate/run/verify/approve.
+1. Validate the mandate, universe, sector/subsector assignments, sources, dates and scope.
+2. Route analyst-supplied model inputs through business-model-specific valuation checks and deterministic calculations.
+3. Snapshot the plan, evidence brief, selected sector packs and coverage inventory.
+4. Execute scoped specialist/common stages with fixed prompts and structured JSON responses.
+5. Validate citation identifiers against the evidence actually available to each stage, claim types, confidence bounds and missing-data decisions.
+6. Preserve unresolved gaps and independent coverage gaps in final status. A later synthesis cannot erase an earlier gap.
+7. Export the memo, per-stage workpapers, source/claim references, sector matrix, valuation workpaper and audit log; hash the run artifacts.
+8. Require explicit human source/model review before local self-attestation.
 
-## Provider and source boundaries
+Specialists receive their own company universe, scoped evidence and explicitly marked global context. Other specialists' outputs are excluded from their first-pass context. Common comparison stages can read the validated workpapers. These are sequential roles using one configured model adapter, not independently trained or independently verified agents.
 
-The OpenAI adapter uses the fixed HTTPS Responses API endpoint, structured JSON output, an environment-held key, a 120-second per-request timeout, at most two retries for selected rate-limit/server errors, and a total HTTP-request budget including retries. Redirects are refused; credentials are not forwarded to another host. There are no arbitrary HTTP tools, source crawlers, shell tools or trading APIs available to the model. Input character limits fail instead of silently truncating evidence. API timeouts may incur provider charges even without an accepted result; request limits are not dollar budgets.
+## Code ownership
 
-The live request body follows OpenAI's documented structured-output interface. Official implementation reference, checked 24 September 2026: https://developers.openai.com/api/docs/guides/structured-outputs . A user-selected model must support the requested API capabilities. `store=false` is a request setting, not a zero-retention guarantee or substitute for organizational policy.
+`sector_data.py` is the original catalog. `routing.py` handles sectors, prompts, evidence scope and coverage. `contracts.py` validates the packet and stage schema. `valuation.py` owns active method dispatch, new equity/NAV math and business-model/source guardrails; `models.py` supplies existing deterministic operating-company DCF, EV/EBITDA and simplified rNPV helpers. `provider.py` contains demo and opt-in OpenAI adapters. `engine.py` owns orchestration, reports, CSV ledgers, manifests and review. `__main__.py` exposes `catalog`, `plan`, `validate`, `run`, `verify` and `approve`.
 
-For richer source access, a separate authorized host can retrieve filings, trials, regulator/CMS records and market data, then construct the evidence packet. This repository does not package those host connectors. Exported prompts can guide that host; they do not grant permissions. New adapters should preserve the `generate(stage, instructions, context)` contract and return validated JSON. Do not wire credentials or provider-specific claims into prompts.
+## States and exits
 
-## Limits of controls
+A demo is always `DEMO` and cannot be approved. A non-demo run with any stage or coverage gap is `BLOCKED`, with CLI exit code 2. A structurally complete non-demo run is `NEEDS_HUMAN_REVIEW`, not approved research. Invalid inputs or model responses fail closed and return code 1; an interrupted run records `error.json` rather than a successful result. Exit code 0 only means the command completed, not that investment conclusions are correct.
 
-Source-ID validation catches nonexistent references but not fabricated text attributed to a real source. Date checks cannot verify website history, superseding disclosures or intraday availability. Public flags are user attestations, not classifiers. Prompt-injection instructions reduce risk but are not a proof of immunity; the hard boundary is that model text cannot execute tools or change workflow code.
+## Provider and security boundaries
 
-Artifact hashes detect changes relative to a local manifest. They are not signed, externally timestamped or protected against an attacker replacing both files and manifest. Reviewer identity is self-declared. This is not a multi-user authorization system, compliance platform, order-management system or validated clinical tool.
+The adapter uses the fixed HTTPS OpenAI Responses endpoint, environment-held credentials, structured JSON, bounded input/output and request attempts, refused redirects and no source-browsing or shell tools. It requests `store=false`, which is not a zero-retention guarantee. The default 48 HTTP attempts include retries; a 750,000-character context limit is not a token-window or dollar-cost guarantee. Users must select a compatible available model and apply their provider's data policy. Official implementation reference: [OpenAI structured outputs](https://developers.openai.com/api/docs/guides/structured-outputs), checked 2026-09-24.
+
+Source acquisition occurs outside the runtime through an analyst or an authorized tool-enabled host. The source-routing catalog describes needed evidence, not implemented third-party connectors. No live provider or paid-data connection was tested in this release.
+
+Hashes detect artifact changes relative to a local manifest; they are not externally signed or timestamped. Reviewer identity is self-declared. Evidence-ID and scope checks do not prove semantic support or data completeness. Public-data flags are analyst attestations, not confidentiality classifiers. Prompt-injection instructions are not immunity; the hard boundary is that model text cannot execute tools or change the workflow. This is not an order-management, compliance-certification or multi-user authorization system.

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import html
+import csv
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -10,7 +11,8 @@ from urllib.parse import quote
 from . import __version__
 from .contracts import (ROOT, STAGE_SCHEMA, canonical, digest, load_json, require,
                         text, validate_brief, validate_stage, workflow)
-from .models import valuations
+from .valuation import value_models as valuations
+from .routing import stage_prompt, context_for, coverage
 
 
 def now() -> str:
@@ -30,10 +32,10 @@ def build_plan(brief: dict) -> dict:
     flow, pack = workflow(brief)
     stages = flow["stages"]
     require(len(stages) == len(set(stages)), "Workflow contains duplicate stages")
-    require(stages[-1] == "synthesis" and "challenge" in stages,
+    require(stages[-2:] == ["challenge", "synthesis"],
             "Every workflow must finish with challenge followed by synthesis")
     for stage in stages:
-        require((ROOT / "prompts" / f"{stage}.md").is_file(), f"Missing stage prompt: {stage}")
+        stage_prompt(stage, pack)
     return {"version": __version__, "workflow": brief["workflow"], "purpose": flow["purpose"],
             "question": brief["question"], "as_of": brief["as_of"],
             "sector": brief["sector"], "stages": stages,
@@ -49,9 +51,10 @@ def export_plan(brief: dict, out: Path) -> dict:
     system = (ROOT / "prompts" / "system.md").read_text(encoding="utf-8")
     _, pack = workflow(brief)
     for index, stage in enumerate(plan["stages"], 1):
-        prompt = (ROOT / "prompts" / f"{stage}.md").read_text(encoding="utf-8")
-        content = system + "\n\n" + prompt + "\n\n## Mandate\n```json\n" + canonical(brief) + "```\n"
-        content += "\n## Sector pack\n```json\n" + canonical(pack) + "```\n"
+        prompt = stage_prompt(stage, pack)
+        scope = context_for(stage, brief, pack, [], {})
+        content = system + "\n\n" + prompt + "\n\n## Mandate\n```json\n" + canonical(scope["brief"]) + "```\n"
+        content += "\n## Sector pack\n```json\n" + canonical(scope["sector_pack"]) + "```\n"
         content += "\nAttach validated prior-stage outputs and sources; never invent missing tool access.\n"
         (out / f"{index:02d}-{stage}.md").write_text(content, encoding="utf-8")
     return plan
@@ -70,6 +73,15 @@ def render(result: dict, brief: dict) -> str:
         lines += ["> SYNTHETIC DEMONSTRATION. No live data, no LLM inference, no investment conclusion.", ""]
     if result["warnings"]:
         lines += ["## Source cautions", ""] + [f"- {safe(w)}" for w in result["warnings"]] + [""]
+    if result.get("coverage"):
+        lines += ["## Cross-sector scope and evidence coverage", "",
+                  "Counts describe this packet only, not the full market or semantic evidence quality.", "",
+                  "| Sector | Supplied companies | Scoped primary records | Missing coverage |",
+                  "|---|---:|---:|---|"]
+        for sid, row in result["coverage"].items():
+            lines.append(f"| {sid} | {len(row['entity_ids'])} | {len(row['primary_source_ids'])} | "
+                         f"{safe('; '.join(row['gaps']) or 'None structurally detected')} |")
+        lines += [""]
     # Show the final answer first, then the underlying workpapers.
     stages = result["stages"]
     order = ["synthesis"] + [s for s in stages if s != "synthesis"]
@@ -94,7 +106,7 @@ def render(result: dict, brief: dict) -> str:
                   "| Case | Analyst weight | EV (millions) | Value/share | Upside |",
                   "|---|---:|---:|---:|---:|"]
         for case in model["scenarios"]:
-            lines.append(f"| {case['name']} | {case['probability']:.0%} | {case['enterprise_value']:.2f} | "
+            lines.append(f"| {case['name']} | {case['probability']:.0%} | {format(case['enterprise_value'], '.2f') if case['enterprise_value'] is not None else 'Not applicable'} | "
                          f"{case['value_per_share']:.2f} | {case['upside']:.1%} |")
         lines += ["", f"Probability-weighted value/share: **{model['expected_value_per_share']:.2f}**; "
                   f"upside: **{model['expected_upside']:.1%}**.", "", safe(model["assumptions_note"]), "",
@@ -141,11 +153,13 @@ def run(brief: dict, provider, out: Path) -> dict:
     save(out / "brief.json", brief)
     save(out / "plan.json", plan)
     save(out / "sector-pack.json", pack)
+    scoped_coverage = coverage(brief, pack)
+    save(out / "coverage.json", scoped_coverage)
     save(out / "valuation.json", computed)
     system = (ROOT / "prompts" / "system.md").read_text(encoding="utf-8")
     result = {"version": __version__, "created_at": now(), "provider": provider.name,
               "model": provider.model, "status": "RUNNING", "warnings": warnings,
-              "stages": {}, "valuations": computed}
+              "stages": {}, "valuations": computed, "coverage": scoped_coverage}
     ids = {source["id"] for source in brief["sources"]}
     audit = out / "audit.jsonl"
     def event(kind: str, **details):
@@ -154,21 +168,22 @@ def run(brief: dict, provider, out: Path) -> dict:
     event("run_started", provider=provider.name, model=provider.model)
     try:
         for stage in plan["stages"]:
-            instructions = system + "\n\n" + (ROOT / "prompts" / f"{stage}.md").read_text(encoding="utf-8")
+            instructions = system + "\n\n" + stage_prompt(stage, pack)
             (out / "prompts" / f"{stage}.md").write_text(instructions, encoding="utf-8")
             event("stage_started", stage=stage)
-            response = provider.generate(stage, instructions,
-                {"brief": brief, "sector_pack": pack, "computed_valuations": computed,
-                 "previous_stages": result["stages"], "stage": stage})
+            context = context_for(stage, brief, pack, computed, result["stages"])
+            response = provider.generate(stage, instructions, context)
             save(out / f"{stage}.json", response)
-            validate_stage(response, ids)
+            validate_stage(response, {source["id"] for source in context["brief"]["sources"]})
             if stage == "challenge":
                 require(bool(response["thesis_breakers"]), "Challenge stage must specify a falsification test")
             result["stages"][stage] = response
             event("stage_validated", stage=stage, decision=response["decision"])
-        blocked = any(s["decision"] == "needs_data" for s in result["stages"].values())
+        blocked = (any(s["decision"] == "needs_data" for s in result["stages"].values())
+                   or any(c["gaps"] for c in scoped_coverage.values()))
         result["status"] = "DEMO" if demo else "BLOCKED" if blocked else "NEEDS_HUMAN_REVIEW"
         result["usage"] = provider.usage
+        export_ledgers(out, result, pack)
         save(out / "result.json", result)
         (out / "report.md").write_text(render(result, brief), encoding="utf-8")
         event("run_finished", status=result["status"], http_calls=provider.calls)
@@ -220,3 +235,24 @@ def approve(out: Path, reviewer: str, note: str, acknowledge: bool) -> dict:
               "disclaimer": "Local self-attestation, not authenticated identity or compliance authorization."}
     save(out / "review.json", review)
     return review
+
+
+def export_ledgers(out: Path, result: dict, pack: dict) -> None:
+    """Export inspectable CSVs; neutralize spreadsheet formula injection in text cells."""
+    def cell(value):
+        value = str(value)
+        return "'" + value if value.lstrip().startswith(('=', '+', '-', '@')) else value
+    with (out / 'sector-matrix.csv').open('w', newline='', encoding='utf-8') as handle:
+        writer = csv.writer(handle)
+        writer.writerow(['sector_id','sector_name','entity_ids','primary_source_ids','coverage_gaps','specialist_decision','specialist_summary'])
+        for sid, cov in result['coverage'].items():
+            specialist = result['stages'].get('specialist_' + sid, {})
+            writer.writerow([cell(x) for x in [sid,pack['sectors'][sid]['name'], '; '.join(cov['entity_ids']),
+                '; '.join(cov['primary_source_ids']), '; '.join(cov['gaps']), specialist.get('decision','not_run'),specialist.get('summary','')]])
+    with (out / 'claim-ledger.csv').open('w', newline='', encoding='utf-8') as handle:
+        writer = csv.writer(handle)
+        writer.writerow(['stage','claim_id','topic','kind','claim','source_ids','self_assessed_confidence'])
+        for stage, item in result['stages'].items():
+            for claim in item['claims']:
+                writer.writerow([cell(x) for x in [stage,claim['id'],claim['topic'],claim['kind'],claim['text'],
+                    '; '.join(claim['source_ids']),claim['confidence']]])

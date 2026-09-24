@@ -1,2 +1,2 @@
-"""Evidence-gated, healthcare-first sector research workflows."""
-__version__ = "2.0.0"
+"""Evidence-gated research across all eleven major equity sectors."""
+__version__ = "3.0.0"

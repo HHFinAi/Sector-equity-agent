@@ -35,8 +35,8 @@ class OpenAIProvider:
     """Responses API. Environment-held key; fixed HTTPS host; bounded calls and output."""
     name = "openai"
 
-    def __init__(self, *, model: str, allow_network: bool, max_calls: int = 16,
-                 max_input_chars: int = 180_000, max_output_tokens: int = 5000):
+    def __init__(self, *, model: str, allow_network: bool, max_calls: int = 48,
+                 max_input_chars: int = 750_000, max_output_tokens: int = 5000):
         require(allow_network, "Live mode requires --allow-network: public evidence will be sent to OpenAI")
         require(bool(model.strip()), "Set --model or OPENAI_MODEL to an available model ID")
         key = os.environ.get("OPENAI_API_KEY", "")
@@ -93,7 +93,12 @@ class DemoProvider:
         self.usage = []
 
     def generate(self, stage: str, instructions: str, context: dict) -> dict:
-        source = context["brief"]["sources"][0]
+        sources = context["brief"]["sources"]
+        if not sources:
+            return {"summary": "DEMO ONLY: no scoped evidence supplied", "claims": [],
+                    "gaps": ["Missing scoped evidence"], "thesis_breakers": ["No investment thesis in a fixture"],
+                    "decision": "needs_data"}
+        source = sources[0]
         return {
             "summary": f"DEMO ONLY: {stage} contract executed; no live research or model inference.",
             "claims": [{"id": f"{stage}-fixture", "topic": "fixture-validation",

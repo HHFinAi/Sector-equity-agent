@@ -1,0 +1,166 @@
+"""Original analyst research lenses for 11 major sectors; not an issuer classification database."""
+
+sectors={}
+def add(sid,name,code,mandate,rows,drivers,sources,materiality,traps,questions):
+    subs={}
+    for row in rows:
+        key,lens,kpis,methods=row
+        subs[key]={'research_lens':lens,'kpis':kpis.split('; '),'valuation_methods':methods.split()}
+    sectors[sid]={'name':name,'sector_code':code,'specialist_mandate':mandate,'subsectors':subs,'transmission_tests':drivers,'primary_source_requests':sources,'materiality_tests':materiality,'analytical_traps':traps,'diligence_questions':questions}
+add('energy','Energy','10',
+'Underwrite commodity exposure, the asset cost curve, production durability, capital discipline and cash returns. Separate resource economics from infrastructure contracts and service-cycle operating leverage.',[
+('exploration-production','Rebuild volume x realized price less cash cost, royalties, sustaining spend and abandonment.','production and decline rate; realized price after hedging; lifting and finding cost; reserves and sustaining capex','dcf multiple pe'),
+('integrated-oil-gas','Separate upstream, downstream and marketing economics before aggregating.','segment returns; upstream cash margins; refining throughput; net debt','dcf multiple pe'),
+('refining-marketing','Model product cracks, feedstock differentials and utilization rather than crude price alone.','crack spread; utilization; capture rate; turnaround spending','multiple dcf pe'),
+('midstream-lng','Distinguish volume/commodity exposure from contracted or regulated cash flows.','contract duration; take-or-pay mix; distributable cash reconciliation; maintenance capex','dcf multiple ddm'),
+('oilfield-services','Connect operator spending and rig/frac activity to pricing and incremental margins.','rig and fleet utilization; pricing; backlog conversion; free cash flow','multiple dcf pe'),
+('energy-equipment','Underwrite equipment orders, installed fleet and aftermarket economics.','book-to-bill; backlog quality; service mix; warranty costs','dcf multiple pe'),
+('coal-consumable-fuels','Separate thermal/metallurgical markets and declining-asset run-off obligations.','realized price; unit cost; reserve life; reclamation liability','dcf multiple pe')],
+['Commodity curve -> realized prices after hedges -> operating cash flow -> discretionary capex and distributions.', 'Service inflation/decline rates -> sustaining capital -> cash breakeven, not reported EBITDA alone.', 'LNG or pipeline capacity -> local price basis and contracted utilization -> segment cash flow.'],
+['Issuer reserve reports, segment filings, hedge schedules and abandonment obligations.', 'EIA or relevant national energy agency supply/demand, inventory and production releases; dated commodity curves from an authorized source.', 'Regulator permits, pipeline tariffs, export approvals and contract disclosures with jurisdiction and effective dates.'],
+['Methane/leakage and flaring -> remediation, taxes or operating cost; distinguish measured and estimated emissions.', 'Transition and physical risk -> commodity demand, stranded capital and asset retirement, with no automatic valuation premium for a label.'],
+['Using peak commodity EBITDA as normalized earnings.','Applying perpetual growth to a depleting reserve base.','Counting growth capex as entirely discretionary or ignoring hedges and minority interests.'],
+['At which realized price does sustaining cash flow cover obligations and distributions?','Which costs and contracts reset under the downside commodity scenario?','Does reported reserve growth create per-share value after acquisition and development spending?'])
+add('materials','Materials','15',
+'Map global capacity, resource grade, conversion spreads, regional cost positions and replacement economics. Separate structural scarcity from temporary restocking.',[
+('diversified-mining','Value distinct commodity exposures and mine-level cash costs, depletion and growth commitments.','grade and recovery; production; unit cash cost; reserve life','dcf multiple pe'),
+('precious-metals','Separate metal-price beta from mine execution, royalties and dilution.','all-in sustaining cost; payable ounces; reserve replacement; sustaining capital','dcf multiple pe'),
+('steel-aluminum','Model regional supply discipline and metal/input spreads.','realized spread; capacity utilization; energy intensity; inventory days','multiple dcf pe'),
+('commodity-chemicals','Map feedstock advantage, new capacity and product-cycle spreads.','product-feedstock spread; utilization; regional capacity; working capital','multiple dcf pe'),
+('specialty-chemicals','Test specification lock-in and genuine pricing power versus raw-material pass-through.','volume-price-mix; retention; innovation sales; normalized margin','dcf multiple pe'),
+('fertilizers-agriculture','Link crop economics, nutrient affordability and regional gas costs.','nutrient price; natural gas cost; utilization; farmer affordability','multiple dcf pe'),
+('industrial-gases','Examine long-duration onsite contracts and project returns.','backlog; take-or-pay coverage; energy pass-through; return on capital','dcf multiple pe'),
+('packaging-forest-products','Separate conversion margins, fiber costs and substitution risks.','shipment volume; spread per unit; recycled content cost; utilization','multiple dcf pe'),
+('construction-materials','Underwrite local logistics advantages, permits and construction demand.','volume and price per ton; fuel costs; utilization; local market concentration','multiple dcf pe')],
+['Capacity additions and demand -> utilization -> conversion spread -> EBITDA and inventory cash flow.', 'Ore grade/input-energy cost/FX -> marginal cost position -> survival and share gain.', 'Construction and manufacturing demand -> shipment volumes; separate distributor stocks from end consumption.'],
+['Issuer mine technical reports, cost disclosures, site economics and capex schedules.', 'USGS or national geological agencies, official industrial production/trade statistics and authorized exchange price series.', 'Permitting, water-rights and environmental liability records by asset jurisdiction.'],
+['Water scarcity, tailings and rehabilitation -> disruption, required capital and contingent liabilities.', 'Process emissions and recycled substitution -> operating cost, product demand and capex; avoid assuming gross avoided emissions equal issuer reductions.'],
+['Extrapolating peak spreads.','Confusing cost guidance excluding royalties with all-in cash cost.','Using aggregate demand without inventory and capacity reconciliation.'],
+['What capacity closes before the company becomes cash-negative?','What is the volume-price-cost bridge at mid-cycle rather than spot conditions?','Which asset-level permits, grades or water constraints could change recoverable value?'])
+add('industrials','Industrials','20',
+'Distinguish orders, delivered output, installed-base service revenue and cash conversion. Underwrite cyclical operating leverage separately from recurring infrastructure economics.',[
+('aerospace-defense','Separate aircraft production, flight-hour aftermarket and funded defense programs.','deliveries; funded backlog; aftermarket mix; program cash charges','dcf multiple pe'),
+('machinery-automation','Map customer capex, channel inventory and aftermarket resilience.','orders and book-to-bill; dealer inventory; service revenue; incremental margin','multiple dcf pe'),
+('electrical-equipment','Test grid/data-center exposure, lead times and capacity expansion returns.','backlog duration; shipment conversion; price-cost spread; capacity utilization','dcf multiple pe'),
+('construction-engineering','Underwrite contractual risk and milestone cash rather than backlog alone.','backlog margin; fixed-price mix; project claims; cash conversion','multiple dcf pe'),
+('building-products','Connect repair/remodel and new construction to distributor demand.','volume-price-mix; channel inventory; geographic mix; contribution margin','multiple dcf pe'),
+('airlines','Model traffic, fares, fuel and fleet capital on comparable lease definitions.','load factor; yield; unit cost excluding fuel; fleet commitments','multiple dcf pe'),
+('transport-logistics','Separate rail/truck/parcel/shipping cycles, asset utilization and network density.','tonnage or shipment count; yield; operating ratio; fleet utilization','multiple dcf pe'),
+('commercial-professional-services','Test recurring contracts, staffing cycles and working-capital requirements.','organic growth; renewal; bill rates and utilization; receivable days','dcf multiple pe'),
+('waste-environmental-services','Underwrite route density, disposal scarcity and regulated liabilities.','volume-price-mix; landfill capacity; retention; closure liabilities','dcf multiple pe')],
+['Customer orders -> backlog quality/cancellations -> deliveries -> price-cost capture -> working-capital-adjusted cash.', 'Installed fleet -> utilization -> service attachment -> recurring margin.', 'Capacity bottleneck -> lead time and customer behavior -> normalization risk when capacity arrives.'],
+['Issuer segment filings, order definitions, backlog cancellation terms, project/fleet commitments and pension disclosures.', 'Official production, construction, transport/traffic and procurement records; funded orders versus proposed budgets.', 'Relevant safety regulators and certification records; customer/supplier original disclosures.'],
+['Energy efficiency and electrification demand -> product mix and project returns; test actual economics.', 'Product safety, workforce shortages and supply-chain labor practices -> recall, delay, liability and cost.'],
+['Treating all backlog as firm revenue.','Comparing EBITDA with inconsistent lease or pension treatment.','Calling order pull-forward structural growth.'],
+['How much backlog can cancel, reprice or require loss-making delivery?','Which incremental margins survive normalized utilization?','What cash is absorbed before booked earnings become distributable?'])
+add('consumer-discretionary','Consumer Discretionary','25',
+'Underwrite disposable-income sensitivity, customer cohorts, unit economics and brand/distribution advantage. Separate demand growth from promotional share gains.',[
+('automobiles-components','Model units, net selling price, mix, factory utilization and finance exposure.','deliveries; net ASP; inventory days; warranty and capex','multiple dcf pe'),
+('retail-ecommerce','Separate same-store demand, store growth, online economics and marketplace fees.','transactions and basket; comparable sales; contribution margin; inventory turns','dcf multiple pe'),
+('apparel-luxury','Test brand desirability, full-price sell-through and regional mix.','organic growth; price-mix; full-price sell-through; wholesale inventory','dcf multiple pe'),
+('restaurants','Separate company-owned and franchise economics and unit expansion.','traffic and ticket; comparable sales; restaurant margin; franchisee returns','dcf multiple pe'),
+('hotels-leisure','Underwrite room demand, distribution cost, management/franchise mix and capital intensity.','occupancy; ADR and RevPAR; fee growth; net unit growth','dcf multiple pe'),
+('homebuilders-durables','Link affordability, cancellations and incentives to delivered margins and land use.','orders; cancellation rate; net ASP after incentives; land turns','multiple dcf pe'),
+('travel-gaming','Separate booking value, realized revenue and regulatory/customer-acquisition cost.','bookings or handle; take rate; customer retention; contribution margin','dcf multiple pe')],
+['Real disposable income, credit and confidence -> traffic/unit demand -> net price/promotions -> gross margin.', 'Customer acquisition/retention -> cohort lifetime economics -> reinvestment capacity.', 'Inventory mismatch -> markdowns and cash release/absorption -> normalized earnings.'],
+['Issuer segment reports, same-store/KPI definitions, cohort disclosures and franchise/store economics.', 'Official retail sales, household income, employment, consumer credit and housing/visitor statistics by geography.', 'Original platform/store or regulatory records with consistent observation windows; licensed channel data only.'],
+['Product safety, sourcing/labor and privacy -> operating disruption, liability, retention and brand economics.', 'Transition of mobility/building products -> competitive cost and capital needs; separate impact goals from financial returns.'],
+['Using gross bookings or marketplace GMV as revenue.','Attributing same-store growth entirely to traffic when price drives it.','Ignoring lease commitments and franchisee stress.'],
+['What remains of growth after price, promotions and new capacity?','Which customer cohorts earn an adequate return after service and acquisition cost?','How does a weaker income/credit environment affect both revenue and inventory?'])
+add('consumer-staples','Consumer Staples','30',
+'Disaggregate price, volume and mix; test distribution strength, elasticity and sustainable cash generation rather than assuming defensive earnings.',[
+('food-beverages','Separate category growth, innovation, volume elasticity and input-cost pass-through.','volume-price-mix; gross margin; market share; working capital','dcf multiple pe ddm'),
+('household-personal-care','Underwrite repeat use, brand premium, innovation and retailer bargaining power.','organic sales; units and net price; marketing productivity; distribution','dcf multiple pe'),
+('staples-retail-distribution','Model traffic, basket, shrink, membership and thin-margin operating leverage.','same-store sales; traffic; shrink; inventory turns','dcf multiple pe'),
+('tobacco-nicotine','Separate legacy decline, alternatives adoption and excise/regulatory exposure.','volumes by product; net price after excise; alternative share; cash conversion','dcf pe ddm'),
+('agricultural-processing','Underwrite origination, processing spreads, freight and inventory hedges.','crush spread; throughput; inventory and hedge exposure; returns on capital','multiple dcf pe')],
+['Commodity/packaging/freight costs -> pricing lag -> volume elasticity -> gross margin recovery or erosion.', 'Private-label substitution and retail concentration -> shelf space and trade spending -> brand returns.', 'Population and habit change -> category mix -> cash flow durability.'],
+['Issuer volume-price-mix bridges, segment margins, promotional and distribution disclosures.', 'Official consumption, agriculture, food input price and trade statistics; authorized retail scanner data with population coverage.', 'Applicable product safety, excise and advertising regulations with dates and jurisdictions.'],
+['Water, agricultural sourcing and deforestation exposure -> supply resilience and compliance cost.', 'Nutrition, product harms, packaging and marketing practices -> liability, regulation and license to operate; no ethical label inferred from cash flow.'],
+['Calling price-led revenue volume growth.','Using spot input prices without inventory/hedging lag.','Assuming stable margins regardless of retailer and private-label competition.'],
+['At what net price does volume/share deterioration offset pricing?','Is margin recovery cost relief, mix or sustainable productivity?','Which distribution or consumer behavior changes could erode recurring cash?'])
+add('healthcare','Health Care','35',
+'Connect clinical or service utility, reimbursement, adoption and capital needs to cash flows. Healthcare is one peer sector, not the default mandate.',[
+('biotech','Assess endpoint validity, effect size, safety, competitive differentiation and financed development paths.','effect size and confidence interval; endpoint hierarchy; cash runway; risk-adjusted asset cash flows','rnpv dcf'),
+('pharma','Model product/geographic sales, exclusivity loss and pipeline replacement.','net product sales; loss-of-exclusivity exposure; R&D output; free cash flow','dcf pe multiple'),
+('medtech','Connect procedures, placement, utilization and consumables to returns.','procedure volume; active installed base; organic growth; recurring revenue','dcf multiple pe'),
+('services-payors','Separate insurer utilization/rates from provider volumes, staffing and reimbursement.','medical loss ratio or provider unit margins; membership or admissions; labor cost; cash collection','pe dcf multiple'),
+('tools-diagnostics','Separate funding/capex, installed instruments, consumables and reimbursement.','orders; organic growth; test volume and net price; consumables pull-through','dcf multiple pe'),
+('digital-health','Test adoption, retention, clinical utility and recurring unit economics.','retention denominator; recognized revenue; gross margin; cash burn','dcf multiple pe'),
+('drug-distribution','Model distribution fees, product mix, working capital and customer concentration.','distribution volumes; gross profit per unit; receivable and payable days; leverage','dcf multiple pe'),
+('cro-cdmo','Link funded research/manufacturing demand to backlog quality, utilization and compliance.','book-to-bill; cancellations; facility utilization; delivery milestones','dcf multiple pe')],
+['Clinical or operational benefit -> payer/provider adoption -> utilization x net price -> cash flow.', 'Funding conditions -> trials/research/tool purchases -> spending and financing runway.', 'Reimbursement, labor and medical utilization -> divergent insurer/provider margins.'],
+['Issuer financials, product/segment reports, development spend and funding obligations.', 'ClinicalTrials.gov historical registry/protocol plus original study results; regulator decision/label and safety records.', 'CMS or jurisdictional payer/HTA payment rules and utilization data, with coverage/completeness limits.'],
+['Access, pricing, patient safety and research ethics -> demand, reimbursement, liability and trust.', 'Supply reliability, manufacturing quality and data privacy -> interruption, recall and cost.'],
+['Cross-trial ranking without comparability.','Equating registry completion with readout or clearance with payment.','Risk-adjusting unavoidable costs at approval probability or ignoring dilution.'],
+['What measured benefit survives comparator and endpoint scrutiny?','Who pays, at what net economics, and what is the adoption bottleneck?','Can the company fund its path to value without thesis-breaking dilution?'])
+add('financials','Financials','40',
+'Separate balance-sheet intermediation from fee businesses. Underwrite capital adequacy, liquidity, credit losses and distributable equity earnings; do not force bank debt into industrial EV/EBITDA.',[
+('banks','Reconcile asset yields, deposit beta/mix, credit cost and regulatory capital.','net interest margin; deposit beta; cost of risk; CET1 and tangible book','pe ptbv ddm'),
+('consumer-finance','Assess funding duration, borrower cohorts, securitization and loss seasoning.','delinquencies and charge-offs; risk-adjusted yield; funding cost; capital','pe ptbv ddm'),
+('property-casualty-insurance','Separate underwriting, reserve development and investment income.','combined ratio; rate versus loss trend; reserve adequacy; book value','pe ptbv ddm'),
+('life-insurance','Model asset-liability duration, guarantees, lapse behavior and capital.','spread earnings; new-business economics; solvency; cash remittance','pe ptbv ddm'),
+('asset-wealth-management','Disaggregate market-driven AUM changes from flows and fee compression.','net flows; fee rate; operating leverage; performance-fee mix','dcf multiple pe'),
+('exchanges-data','Test trading/clearing volatility sensitivity and recurring data pricing.','volume and capture rate; recurring data growth; margin; regulatory capital','dcf multiple pe'),
+('payments','Separate networks, merchant acquiring and lending; map take rates and loss exposure.','payment volume; net take rate; cross-border mix; transaction cost','dcf multiple pe'),
+('brokers-investment-banks','Separate transactional revenue, financing books and recurring wealth income.','deal backlog; trading revenue; funding liquidity; returns on tangible equity','pe ptbv ddm')],
+['Yield curve and deposit competition -> funding spread -> net interest income; test deposit migration rather than assuming rate direction.', 'Credit quality and reserves -> losses -> earnings and regulatory distributable capital.', 'Asset prices and transactions -> AUM/volumes/fees -> fee-business margin; distinguish flows from market beta.'],
+['Issuer regulatory capital, liquidity, segment and asset-liability disclosures; statutory insurer filings where relevant.', 'Central-bank and banking/insurance-supervisor records, call reports and official credit statistics.', 'Company-original fee/flow/reserve data; authorized yield curves, spreads and consensus with comparable definitions.'],
+['Financed exposures and underwriting concentration -> credit/market risk; financed emissions are not identical to direct emissions.', 'Conduct, financial inclusion, privacy/cyber and mis-selling -> remediation, customer retention and capital.'],
+['Using generic EV/EBITDA for a bank or subtracting deposits from equity value.','Treating reserve releases as recurring earnings.','Reading book value without asset quality, goodwill and capital restrictions.'],
+['What return on tangible equity is sustainable after normalized losses?','How much capital can actually reach shareholders under a stress case?','What distinguishes organic fee growth from asset-market appreciation?'])
+add('information-technology','Information Technology','45',
+'Underwrite technological bottlenecks, customer economics, monetization, replacement cycles and capital intensity. Separate business adoption from valuation already capitalizing that adoption.',[
+('semiconductors','Map architecture exposure, capacity, inventory and customer concentration across logic and memory.','units x ASP; inventory days; utilization and yield; design-win revenue','dcf multiple pe'),
+('semiconductor-equipment','Link wafer/fab spend and technology transitions to order conversion and service.','orders; backlog; installed-base service; customer capex','dcf multiple pe'),
+('software','Reconcile recurring revenue, retention, growth investment and dilution.','ARR and revenue reconciliation; net retention; remaining obligations; FCF after dilution','dcf multiple pe'),
+('it-services','Test discretionary projects, outsourcing renewals and productivity pass-through.','bookings and conversion; utilization; bill rates; margin','dcf multiple pe'),
+('hardware-devices','Separate replacement demand, new categories, channel fill and ecosystem cash.','units and ASP; channel inventory; gross margin; installed base','dcf multiple pe'),
+('communications-equipment','Connect operator/enterprise budgets, deployment cycles and software attachment.','orders; backlog conversion; recurring mix; customer concentration','dcf multiple pe'),
+('electronic-components','Map content per system, end-market mix and manufacturing returns.','content per unit; utilization; design wins; cash conversion','dcf multiple pe')],
+['End-customer ROI -> adoption/budget -> vendor capacity and pricing -> revenue and sustainable margin.', 'AI/cloud capital spending -> semiconductors/equipment, electrical supply and power bottlenecks -> second-order beneficiaries and stranded-capacity risk.', 'Productivity gains -> vendor margin versus customer price reductions; do not assume all savings accrue to suppliers.'],
+['Issuer segment/ARR/order disclosures, contract and stock-compensation reconciliation, customer/supplier original reports.', 'Official trade, industrial production and technology export-control records by jurisdiction; authorized shipment and pricing datasets.', 'Technical product documentation and measured deployment evidence, separating vendor claims from customer verification.'],
+['Electricity/water demand, supply concentration and critical materials -> capacity cost and operating constraint.', 'Cybersecurity, privacy, AI governance and workforce effects -> liability, retention and commercial restrictions; not an automatic ESG valuation uplift.'],
+['Equating backlog/ARR with current revenue.','Ignoring stock-compensation dilution or double-counting hyperscaler spend along the supply chain.','Treating benchmarks or AI demonstrations as proven customer monetization.'],
+['What customer ROI sustains spending after initial deployment?','Where is the scarce capability and who can capture its economics?','Which expectations about share, margins or growth must hold to justify price?'])
+add('communication-services','Communication Services','50',
+'Disaggregate subscription, advertising, content and network economics. Test engagement monetization and distribution power against capital intensity and audience fragmentation.',[
+('telecom','Model subscribers, service pricing, network investment and balance-sheet capacity.','ARPU; churn; subscriber additions; capex and spectrum commitments','dcf multiple pe ddm'),
+('broadband-cable','Assess network substitution, pricing and fixed-asset operating leverage.','broadband additions; ARPU; churn; upgrade capex','dcf multiple pe'),
+('interactive-platforms','Reconcile users, engagement, ad load, price and commercial conversion.','active users and engagement; ad impressions and price; monetization; incremental margin','dcf multiple pe'),
+('media-advertising','Separate ad-cycle spending, share shifts, measurement and agency retention.','organic revenue; client retention; impressions or billings; margin','dcf multiple pe'),
+('streaming-entertainment','Underwrite subscriber economics, content cash spending and licensing.','ARPU and churn; paid subscribers; cash content investment; contribution margin','dcf multiple pe'),
+('gaming-content','Map bookings, recognition, franchises, platform fees and development risk.','bookings and deferred revenue; payer conversion; engagement; development costs','dcf multiple pe')],
+['Audience/engagement -> available impressions or subscription -> realized price -> revenue after acquisition/content/network cost.', 'Competitive access technology -> churn and pricing -> required network investment.', 'Distribution concentration -> platform fees and bargaining power -> monetization and margin.'],
+['Issuer subscriber/cohort metrics, content amortization versus cash spend, spectrum obligations and segment filings.', 'Telecom/media regulators, official broadband/coverage and communications statistics.', 'Original advertiser, distributor and platform disclosures; authorized audience/ad-spend data with coverage definitions.'],
+['Privacy, content integrity, child safety and cybersecurity -> trust, distribution and liability.', 'Digital access and network energy -> commercial reach and cost; evaluate financial and social outcomes separately.'],
+['Treating registered accounts as monetizable active users.','Confusing accounting content amortization with cash investment.','Valuing a network as asset-light without replacement and spectrum cost.'],
+['Is user growth translating into profitable retained revenue?','What portion of ad/subscription growth is share gain versus market beta?','Which network/content commitments limit cash flexibility?'])
+add('utilities','Utilities','55',
+'Separate regulated return recovery, merchant commodity exposure and contracted generation. Translate capital plans into financed, permitted assets and per-share distributable earnings.',[
+('regulated-electric-gas','Model rate base, allowed versus earned returns, recovery lag and financing.','rate-base growth; allowed and earned ROE; funds from operations to debt; equity funding need','dcf pe ddm'),
+('water-utilities','Underwrite infrastructure replacement, permitted tariffs and demand resilience.','regulated asset base; tariff recovery; leakage; capital funding','dcf pe ddm'),
+('merchant-power','Model hourly/regional supply, fuel/carbon, hedges and plant availability.','realized power margin; hedge coverage; availability; sustaining capex','dcf multiple pe'),
+('renewable-generation','Separate contracted project value from development pipeline and refinancing risk.','PPA duration; generation yield; curtailment; project debt and returns','dcf multiple ddm'),
+('multi-utilities','Segment regulated networks, retail and generation before drawing a consolidated view.','segment returns; regulatory recovery; retail churn; net debt','dcf pe ddm')],
+['Verified load growth -> interconnection/permitting -> commissioned capital -> regulated recovery or contracted revenue.', 'Funding rates and equity issuance -> capex affordability -> per-share return, not just asset growth.', 'Weather, fuel/carbon and availability -> merchant spread or recovery lag -> liquidity.'],
+['Issuer rate-base/segment plans, financing requirements, project-level debt and PPA schedules.', 'Relevant utility commission orders and FERC or local equivalent regulatory filings.', 'Grid operator/interconnection records, EIA or national energy data and environmental permits.'],
+['Physical climate/wildfire, water stress and grid resilience -> liability, insurance, hardening capex and reliability.', 'Decarbonization, affordability and stranded assets -> tariff recovery and financing; distinguish allowed from earned returns.'],
+['Assuming announced data-center load is connected and paid.','Ignoring dilution in a capex-led growth plan.','Applying a regulated multiple to merchant earnings without a segment bridge.'],
+['Which capital is already permitted, funded and recoverable?','Who bears cost overruns, fuel changes and curtailment?','How much per-share value remains after necessary financing?'])
+add('real-estate','Real Estate','60',
+'Underwrite property-level NOI, lease economics, capital needs and refinancing. Distinguish market appraisal, equity cash flow and development option value.',[
+('residential-reits','Model rent, turnover, occupancy, concessions and recurring upkeep.','same-property NOI; occupancy; new/renewal rent; recurring capex','nav ffo affo dcf'),
+('industrial-logistics-reits','Assess rent reversion, location scarcity and tenant logistics economics.','leasing spreads; occupancy; weighted lease term; development yield','nav ffo affo dcf'),
+('retail-reits','Connect tenant health, sales productivity and lease renewal economics.','tenant sales; rent coverage; occupancy; cash leasing spread','nav ffo affo dcf'),
+('office-reits','Underwrite effective occupancy, concessions, tenant improvement and rollover/refinancing.','cash rent spread; lease expiries; occupancy; tenant improvement spend','nav ffo affo dcf'),
+('specialty-reits','Separate data centers, towers, storage and healthcare property economics.','lease/power capacity; tenant concentration; recurring capex; development yield','nav ffo affo dcf'),
+('diversified-reits','Value each property type/geography using consistent cash NOI and ownership.','segment NOI; capitalization rates; recurring capex; loan-to-value','nav ffo affo dcf'),
+('real-estate-services','Model transaction activity, recurring management and advisory margins.','transaction volumes; fee take rate; recurring mix; operating leverage','dcf multiple pe'),
+('developers-operators','Reconcile land/project cost, presales, delivery cash and contingent commitments.','presales and cancellations; project cash margin; land bank; completion obligations','dcf pe')],
+['Demand and supply -> occupancy/effective rent -> cash NOI -> asset value at an explicit cap rate.', 'Lease rollovers -> tenant spending and incentives -> recurring equity cash flow.', 'Debt maturity, rates and asset liquidity -> refinancing/dilution -> shareholder value.'],
+['Issuer property-level NOI/occupancy, lease maturity, FFO/AFFO reconciliation, joint venture and debt schedules.', 'Nareit definitions where relevant; local property, planning and transaction records.', 'Authorized transaction/cap-rate datasets with valuation date, geography, asset quality and sample coverage.'],
+['Building efficiency and physical risk -> retrofit cost, occupancy, insurance and terminal liquidity.', 'Tenant well-being, affordability and zoning -> operating/social outcomes evaluated separately.'],
+['Treating FFO, AFFO and operating cash flow as interchangeable.','Applying appraised gross asset value without debt, minorities, preferred or recurring capex.','Using a sector-average cap rate for heterogeneous properties or double-counting cash.'],
+['What cash NOI is sustainable after concessions and required property spending?','Which lease and debt maturities coincide with weaker demand?','What cap rate and cash flow does the current equity price imply?'])
+CATALOG={'schema_version':'3.0','taxonomy':{'basis':'11 major GICS sectors; custom research subsectors, not the full licensed GICS or SASB taxonomy','checked_at':'2026-09-24','references':['https://www.spglobal.com/spdji/en/landing/topic/gics/','https://www.msci.com/indexes/index-resources/gics'],'classification_rule':'Issuer sector tags are supplied and verified by the analyst. Conglomerate segment exposures are separate from a single issuer classification.'},'sectors':sectors}

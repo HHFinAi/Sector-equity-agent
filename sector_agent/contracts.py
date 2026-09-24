@@ -71,14 +71,14 @@ def digest(value: bytes) -> str:
 
 
 def workflow(brief: dict) -> tuple[dict, dict]:
+    from .routing import resolve, expand_stages
     name = identifier(brief.get("workflow"), "workflow")
-    sector = identifier(brief.get("sector"), "sector")
     flows = load_json(ROOT / "workflows" / "catalog.json")
     require(name in flows, f"Unknown workflow: {name}")
-    pack_path = ROOT / "sectors" / f"{sector}.json"
-    require(pack_path.is_file(), f"Unknown sector pack: {sector}")
-    pack = load_json(pack_path)
-    return flows[name], pack
+    bundle = resolve(brief)
+    flow = dict(flows[name])
+    flow["stages"] = expand_stages(flow["stages"], bundle)
+    return flow, bundle
 
 
 def validate_brief(brief: dict, *, demo: bool = False, plan_only: bool = False) -> list[str]:
@@ -88,16 +88,8 @@ def validate_brief(brief: dict, *, demo: bool = False, plan_only: bool = False) 
     as_of = iso_date(brief.get("as_of"), "as_of")
     require(as_of <= date.today(), "as_of cannot be in the future")
     _, pack = workflow(brief)
-    universe = brief.get("universe")
-    require(isinstance(universe, list) and 0 < len(universe) <= 100, "universe: 1-100 entities required")
-    seen = set()
-    for entity in universe:
-        require(isinstance(entity, dict), "universe entries must be objects")
-        entity_id = identifier(entity.get("id"), "entity.id")
-        require(entity_id not in seen, f"Duplicate entity: {entity_id}")
-        seen.add(entity_id)
-        text(entity.get("name"), "entity.name")
-        require(entity.get("subsector") in pack["subsectors"], "Entity subsector not in selected sector pack")
+    from .routing import validate_universe, validate_scope
+    validate_universe(brief, pack)
     sources = brief.get("sources", [])
     require(isinstance(sources, list) and len(sources) <= 150, "sources must be a list of at most 150 records")
     if plan_only:
@@ -134,6 +126,7 @@ def validate_brief(brief: dict, *, demo: bool = False, plan_only: bool = False) 
             warnings.append(f"{sid}: retrieved after cut-off; analyst must verify an archived, point-in-time version")
         if kind in {"market", "research"}:
             warnings.append(f"{sid}: verify licensing and distinguish consensus/opinion from a primary-source fact")
+    validate_scope(brief, pack)
     require(any(s["kind"] in {"filing", "regulatory", "clinical", "company", "synthetic"} for s in sources),
             "At least one primary-source record is required")
     return warnings
