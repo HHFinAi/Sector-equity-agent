@@ -127,6 +127,6 @@ The review command is local self-attestation, not authenticated compliance autho
 
 ## Migration and ownership
 
-The project replaces the healthcare-first v2 architecture on the same private repository. The repository URL/name is unchanged; history and the original MIT license are preserved. The original v1.4 library remains under [`reference/`](reference/); the v2 recovery branch is `archive/healthcare-first-agent-v2-2026-09-24`. See [Migration](docs/MIGRATION.md).
+The active public repository is [HHFinAi/Sector-equity-agent](https://github.com/HHFinAi/Sector-equity-agent). V3 replaces the earlier healthcare-first architecture; the original v1.4 library remains under [`reference/`](reference/). The [migration record](docs/MIGRATION.md) preserves the earlier repository identity and recovery references as historical context. Synchronize an existing clone with **Fetch origin** and **Pull origin** before editing, preserving its `.git` directory and history.
 
 Created for **HHFinAi**. Analyst decision support only: no investment-performance promise, personalized trade execution, medical advice or automated regulatory certification.
