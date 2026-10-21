@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22 — Responsible AI guidance
+
+- Added a project-specific responsible AI policy and visible README entry point, with account-level standards and dated Anthropic references.
+- Linked existing agent and contribution guidance where present; clarified evidence, disclosure, privacy and human-review expectations. Documentation does not establish runtime enforcement or retrospective validation.
+
 ## 3.0.0 — 2026-09-24
 
 Rebuilt the healthcare-first project as **Full Sector Research Agent**. All eleven major equity sectors now have dedicated specialists, with 79 custom research subsectors and distinct business-model lenses, KPIs, valuation methods, causal transmission tests, primary-source requests, materiality tests and diligence questions.

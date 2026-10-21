@@ -1,5 +1,7 @@
 # Full Sector Research Agent
 
+> **Responsible AI:** Analyst-controlled research; verify evidence, disclose AI assistance and protect confidential information. [Policy and project-specific checks](RESPONSIBLE_AI.md).
+
 **All-sector investment research: evidence → industry economics → expectations → valuation → challenge → human judgment.**
 
 **v3.0.0 · 11 major sectors · 79 research subsectors · 12 workflows · 77 offline tests**
