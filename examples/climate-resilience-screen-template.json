@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "as_of": "2026-11-18",
+  "research_mode": "NEEDS_DATA",
+  "source_boundary": "No issuer financials or authorized weather-to-earnings loss functions supplied.",
+  "categories": [
+    "monitoring_early_warning",
+    "cooling_hvac",
+    "insurance_financing",
+    "resilient_agriculture",
+    "resilient_power",
+    "resilient_urban",
+    "water_infrastructure"
+  ],
+  "candidate_cohorts": [
+    {
+      "study": "cooling_hvac",
+      "tickers": [
+        "TT",
+        "JCI",
+        "CARR"
+      ]
+    },
+    {
+      "study": "resilient_power",
+      "tickers": [
+        "GEV",
+        "HUBB",
+        "FLNC"
+      ]
+    },
+    {
+      "study": "resilient_urban",
+      "tickers": [
+        "HEI.DE"
+      ]
+    }
+  ],
+  "issuer_record_template": {
+    "ticker": null,
+    "primary_source_ids": [],
+    "as_of_market_price_utc": null,
+    "asset_locations_verified": false,
+    "materiality_role": null,
+    "payer_name": null,
+    "approved_funding_reference": null,
+    "contracted_supplier_share": null,
+    "contract_award_date": null,
+    "order_to_revenue_lag_months": null,
+    "incremental_annual_fcf": null,
+    "working_capital_requirement": null,
+    "reverse_valuation_hurdle": null,
+    "overlap_with_ai_load": null,
+    "overlap_with_transition_capex": null,
+    "contrary_evidence": [],
+    "outcome": "NEEDS_DATA"
+  }
+}

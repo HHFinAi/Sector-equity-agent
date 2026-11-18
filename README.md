@@ -132,3 +132,8 @@ The review command is local self-attestation, not authenticated compliance autho
 The active public repository is [HHFinAi/Sector-equity-agent](https://github.com/HHFinAi/Sector-equity-agent). V3 replaces the earlier healthcare-first architecture; the original v1.4 library remains under [`reference/`](reference/). The [migration record](docs/MIGRATION.md) preserves the earlier repository identity and recovery references as historical context. Synchronize an existing clone with **Fetch origin** and **Pull origin** before editing, preserving its `.git` directory and history.
 
 Created for **HHFinAi**. Analyst decision support only: no investment-performance promise, personalized trade execution, medical advice or automated regulatory certification.
+
+
+## Climate resilience cross-sector overlay (November 2026)
+
+The [adaptation financial-materiality screen](docs/CLIMATE_RESILIENCE_SECTOR_SCREEN.md) extends the existing materiality and cross-sector prompts with funding/bankability checks, geography, incremental FCF, reverse valuation, AI-grid overlap and comparative HVAC/grid/cement study templates. All candidate issuer inputs remain `NEEDS_DATA`; no current security valuations are asserted.

@@ -8,3 +8,8 @@ Separate three dimensions: fundamental outlook, valuation/expectation bar and im
 State which companies warrant further diligence and why; use 'insufficient evidence' rather than force a rank. No live portfolio weights, sector index returns, factor betas or trade sizes may be invented. Explicitly preserve missing sector primary evidence as a gap. Distinguish broad sector coverage from comprehensive coverage of every listed issuer.
 
 Return the governing JSON fields. Use claim topics sector_comparison, exposure_link, expectation_gap, divergence, catalyst and next_diligence. Text should name affected sector and company IDs. Conclude with what evidence would overturn each major comparison.
+
+
+## Cross-sector climate-resilience comparison (2026-11-18)
+
+Compare gross adaptation need, bankable committed procurement, contractual supplier exposure, incremental FCF, capital intensity and entry-price hurdle as separate axes. Do not rank an insurer by total protection spending or assume a weather outlook is a return distribution. Require current issuer fundamental sources and executable price data to move beyond a research watchlist. For HVAC versus grid versus cement, keep unlike businesses' price-to-earnings multiples separate and require reverse growth/ROIC hurdles. Track separate risk IDs for FCF versus discount-rate channels. The original schema and sample audit gates are in `docs/CLIMATE_RESILIENCE_SECTOR_SCREEN.md`.
