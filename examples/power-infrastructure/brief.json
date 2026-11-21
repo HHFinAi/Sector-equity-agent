@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "question": "For US AI power delivery, identify evidence-led shipment-to-cash and development-to-AFFO/share drivers for BE and EQIX; separate observed facts, unverified catalysts, management expectations and market-implied consensus.",
+  "as_of": "2026-11-21",
+  "workflow": "cross-sector-comparison",
+  "sector": "multi",
+  "sectors": [
+    "industrials",
+    "real-estate"
+  ],
+  "geography": "United States",
+  "benchmark": "No verified share price, market consensus or index baseline; NEEDS_DATA",
+  "horizon": "FY2027-FY2029; exact fiscal year definitions must be verified",
+  "universe": [
+    {
+      "id": "BE",
+      "name": "Bloom Energy",
+      "sector": "industrials",
+      "subsector": "electrical-equipment"
+    },
+    {
+      "id": "EQIX",
+      "name": "Equinix",
+      "sector": "real-estate",
+      "subsector": "specialty-reits"
+    }
+  ],
+  "sources": [],
+  "valuation_models": []
+}

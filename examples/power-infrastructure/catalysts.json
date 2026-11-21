@@ -1,0 +1,35 @@
+{
+  "prepared_on": "2026-11-21",
+  "status": "UNVERIFIED_RESEARCH_WATCHLIST_NOT_FROZEN_PREDICTIONS",
+  "scoring": "None: no probability, verifiable outcome definition or primary sources registered",
+  "items": [
+    {
+      "issuer": "BE",
+      "research_question": "Are new manufacturing assets and supplier commitments converting into delivered gross profit?",
+      "target_window": "FY2027",
+      "source_gate": "issuer filings, signed orders, contract units, production disclosure",
+      "status": "NEEDS_PRIMARY_SOURCE"
+    },
+    {
+      "issuer": "BE",
+      "research_question": "How do service, CCS and combined heat and power change customer unit economics and BE cash conversion?",
+      "target_window": "FY2027-FY2028",
+      "source_gate": "company guidance, contract economics, eligible US tax-credit rules",
+      "status": "NEEDS_PRIMARY_SOURCE"
+    },
+    {
+      "issuer": "EQIX",
+      "research_question": "Are development phases commissioned and leased on schedule and accretive to AFFO/share?",
+      "target_window": "FY2027",
+      "source_gate": "quarterly filings, phase-level MW, lease commencement and project-level capex",
+      "status": "NEEDS_PRIMARY_SOURCE"
+    },
+    {
+      "issuer": "EQIX",
+      "research_question": "Does power and permitting availability improve retail pricing without offsetting capital intensity?",
+      "target_window": "FY2027-FY2028",
+      "source_gate": "dated utility approvals, contracts, landlord capex and disclosed pricing",
+      "status": "NEEDS_PRIMARY_SOURCE"
+    }
+  ]
+}
