@@ -1,0 +1,30 @@
+name: Validate sector research and power-infrastructure examples
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run offline unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Validate BE and EQIX planning-only research intake
+        run: python -m sector_agent plan --brief examples/power-infrastructure/brief.json --out runs/ai-power-issuer-plan
+      - name: Test synthetic cash-flow bridges
+        run: python examples/power-infrastructure/models.py --demo

@@ -1,0 +1,34 @@
+{
+  "notice": "FICTIONAL numbers for testing formulas only, NOT BE or EQIX operating or financial guidance",
+  "manufacturer": {
+    "classification": "SYNTHETIC_TEST_ECONOMICS_NOT_ISSUER_FORECAST",
+    "orders_gw": 1,
+    "order_conversion_fraction": 0.6,
+    "manufacturing_capacity_gw": 0.8,
+    "supplier_available_gw": 0.7,
+    "price_usd_m_per_gw": 2000,
+    "product_gross_margin": 0.24,
+    "beginning_installed_base_gw": 0.5,
+    "service_revenue_usd_m_per_installed_gw_year": 60,
+    "service_gross_margin": 0.25,
+    "cash_opex_usd_m": 200,
+    "capital_expenditure_usd_m": 120,
+    "working_capital_increase_usd_m": 80,
+    "cash_taxes_usd_m": 20
+  },
+  "reit": {
+    "classification": "SYNTHETIC_TEST_ECONOMICS_NOT_ISSUER_FORECAST",
+    "baseline_affo_usd_m": 1000,
+    "baseline_diluted_shares_m": 100,
+    "commissioned_mw": 40,
+    "leased_fraction": 0.8,
+    "in_service_year_fraction": 0.5,
+    "annual_cash_noi_usd_m_per_leased_mw": 3,
+    "incremental_maintenance_capex_usd_m": 10,
+    "incremental_corporate_cash_cost_usd_m": 4,
+    "incremental_cash_interest_usd_m": 15,
+    "incremental_cash_taxes_usd_m": 0,
+    "additional_diluted_shares_m": 2,
+    "development_capex_usd_m": 250
+  }
+}

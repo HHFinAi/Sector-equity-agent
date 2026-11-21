@@ -4,7 +4,9 @@
 
 **All-sector investment research: evidence → industry economics → expectations → valuation → challenge → human judgment.**
 
-**v3.0.0 · 11 major sectors · 79 research subsectors · 12 workflows · 77 offline tests**
+**November 2026 research extension:** [AI power issuers — BE/EQIX plan and deterministic cash-flow bridges](examples/power-infrastructure/README.md). This is a primary-evidence-gated research scaffold, not issuer guidance or a completed valuation.
+
+**v3.0.0 · 11 major sectors · 79 research subsectors · 12 workflows · automated offline tests**
 
 An executable, evidence-led research agent for global equity sector research, cross-sector comparison, company underwriting and sustainability materiality. **Every major sector has a dedicated specialist and business-model-specific research lenses. Healthcare is one peer sector—not the default, and not a template imposed on other industries.**
 
